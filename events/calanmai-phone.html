@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calanmai · Fire Night · Eurielle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Hanken+Grotesk:wght@400;500&amp;family=IM+Fell+English:ital@0;1&amp;family=IM+Fell+English+SC&amp;family=Caveat:wght@500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#08060b}
+a{color:#d9c7ae}a:hover{color:#ffd9a8}
+.scene{position:relative;overflow:hidden;background-color:#08060b;
+  background-image:
+    radial-gradient(ellipse 520px 420px at 50% 104%, rgba(255,112,32,.34), transparent 70%),
+    radial-gradient(ellipse 420px 360px at 50% 46%, rgba(214,72,18,.12), transparent 70%),
+    radial-gradient(1.2px 1.2px at 30px 40px, rgba(255,240,225,.75), transparent),
+    radial-gradient(1px 1px at 140px 110px, rgba(255,240,225,.55), transparent),
+    radial-gradient(1.4px 1.4px at 210px 30px, rgba(255,240,225,.6), transparent);
+  background-size:auto,auto,240px 240px,240px 240px,240px 240px;}
+.ember{position:absolute;bottom:-12px;border-radius:50%;background:#ffb25c;
+  box-shadow:0 0 6px 2px rgba(255,140,40,.75),0 0 14px 4px rgba(255,90,20,.35);
+  animation-name:rise;animation-timing-function:ease-in;animation-iteration-count:infinite;opacity:0;pointer-events:none}
+@keyframes rise{
+  0%{transform:translate(0,0) scale(1);opacity:0}
+  8%{opacity:1}
+  50%{transform:translate(18px,-900px) scale(.8)}
+  100%{transform:translate(-12px,-2000px) scale(.3);opacity:0}}
+.pol{position:absolute;margin:0;box-sizing:border-box;padding:10px 10px 0;background:#efe7d6;
+  box-shadow:0 14px 30px rgba(0,0,0,.6),0 2px 5px rgba(0,0,0,.5)}
+.ph{position:relative;overflow:hidden;background:#1b1410}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ph::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 26px rgba(20,8,0,.45)}
+.ph-num{font-family:'Hanken Grotesk',sans-serif;font-size:10px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase}
+.cap{height:38px}
+.tape{position:absolute;width:70px;height:20px;background:rgba(236,222,190,.62);box-shadow:0 1px 3px rgba(0,0,0,.25);z-index:2}
+.pin{position:absolute;width:14px;height:14px;border-radius:50%;z-index:3;
+  background:radial-gradient(circle at 35% 30%, #ff8a6a, #a8261a 55%, #5a0e08);box-shadow:0 3px 5px rgba(0,0,0,.55)}
+.bill-wrap{position:relative;filter:drop-shadow(0 20px 30px rgba(0,0,0,.7)) drop-shadow(0 0 40px rgba(255,120,40,.18))}
+.bill{position:relative;box-sizing:border-box;padding:44px 26px 48px;color:#2b1a10;
+  background:radial-gradient(ellipse at 50% 38%, #f0e3c6 0%, #e4d2ac 55%, #caa974 100%);
+  box-shadow:inset 0 0 60px rgba(92,36,6,.55),inset 0 0 18px rgba(70,24,0,.65);
+  clip-path:polygon(0 .6%,6% 0,15% .35%,26% 0,40% .45%,54% .1%,68% .5%,82% 0,93% .4%,100% 0,99% 22%,100% 47%,99.1% 73%,100% 100%,86% 99.6%,68% 100%,50% 99.5%,31% 100%,14% 99.6%,0 100%,1% 76%,0 51%,.9% 26%)}
+.glow{position:absolute;inset:0;pointer-events:none;mix-blend-mode:soft-light;
+  background:radial-gradient(ellipse 140% 40% at 50% 108%, rgba(255,120,30,.75), transparent 65%);
+  animation:flicker 3.4s infinite steps(1,end)}
+@keyframes flicker{0%{opacity:.85}12%{opacity:1}20%{opacity:.7}33%{opacity:.95}47%{opacity:.78}60%{opacity:1}74%{opacity:.82}88%{opacity:.94}}
+.nail{position:absolute;left:50%;top:12px;width:12px;height:12px;margin-left:-6px;border-radius:50%;z-index:4;
+  background:radial-gradient(circle at 35% 30%, #a39a90, #4b443e 60%, #1e1a17);box-shadow:0 3px 5px rgba(0,0,0,.6)}
+.sc{font-family:'IM Fell English SC',serif}
+.h{font-family:'IM Fell English SC',serif;font-size:15px;letter-spacing:2.5px;color:#7a2614;margin:0 0 6px;font-weight:400;display:flex;align-items:center;gap:10px}
+.h::after{content:"";flex:1;height:1px;background:linear-gradient(90deg, rgba(122,38,20,.5), transparent)}
+.body{font-family:'Cormorant Garamond',serif;font-size:17px;line-height:1.45;margin:0}
+.list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+.list li{font-family:'Cormorant Garamond',serif;font-size:17px;line-height:1.42;padding-left:18px;position:relative}
+.list li::before{content:"✦";position:absolute;left:0;top:1px;font-size:10px;color:#a0381c}
+.slip{position:absolute;box-sizing:border-box;padding:20px 18px 16px;background:#f4ecd8;color:#2b1a10;
+  box-shadow:0 12px 24px rgba(0,0,0,.55),inset 0 0 22px rgba(150,100,40,.25)}
+.warn{position:relative;padding:14px 14px 14px;border:2px solid rgba(122,38,20,.75);outline:1px solid rgba(122,38,20,.45);outline-offset:3px;background:rgba(160,56,28,.08)}
+.warn-h{font-family:'IM Fell English SC',serif;font-size:16px;letter-spacing:3px;color:#7a2614;text-align:center;margin:0 0 6px;font-weight:400}
+.warn p{font-family:'Cormorant Garamond',serif;font-size:17px;line-height:1.42;margin:0;text-align:center;color:#2b1a10}
+@media (prefers-reduced-motion: reduce){.ember,.glow{animation:none}.ember{opacity:.6}}
+</style>
+<style>html,body{margin:0}.scene{margin:0 auto}</style>
+</head>
+<body>
+
+<div class="scene" style="width: 390px; height: 2340px; display: flex; flex-direction: column;">
+
+  
+    
+      <span class="ember" style="left: 5.5%; width: 2px; height: 2px; animation-duration: 11.2s; animation-delay: -3s;"></span>
+    
+      <span class="ember" style="left: 9.9%; width: 3px; height: 3px; animation-duration: 12.4s; animation-delay: -11.6s;"></span>
+    
+      <span class="ember" style="left: 37.2%; width: 3px; height: 3px; animation-duration: 11.4s; animation-delay: -7.5s;"></span>
+    
+      <span class="ember" style="left: 34.5%; width: 3px; height: 3px; animation-duration: 16.2s; animation-delay: -0.5s;"></span>
+    
+      <span class="ember" style="left: 91.4%; width: 3px; height: 3px; animation-duration: 13.9s; animation-delay: -1.5s;"></span>
+    
+      <span class="ember" style="left: 53.6%; width: 4px; height: 4px; animation-duration: 16.3s; animation-delay: -3.7s;"></span>
+    
+      <span class="ember" style="left: 56.5%; width: 4px; height: 4px; animation-duration: 14.5s; animation-delay: -13.6s;"></span>
+    
+      <span class="ember" style="left: 56.3%; width: 3px; height: 3px; animation-duration: 10s; animation-delay: -6s;"></span>
+    
+      <span class="ember" style="left: 57%; width: 3px; height: 3px; animation-duration: 15.8s; animation-delay: 0s;"></span>
+    
+      <span class="ember" style="left: 56.4%; width: 3px; height: 3px; animation-duration: 9.5s; animation-delay: -7s;"></span>
+    
+      <span class="ember" style="left: 38.5%; width: 2px; height: 2px; animation-duration: 11.3s; animation-delay: -8.1s;"></span>
+    
+      <span class="ember" style="left: 89.1%; width: 3px; height: 3px; animation-duration: 14.9s; animation-delay: -10.3s;"></span>
+    
+      <span class="ember" style="left: 79.3%; width: 3px; height: 3px; animation-duration: 14.1s; animation-delay: -8.8s;"></span>
+    
+      <span class="ember" style="left: 21.6%; width: 3px; height: 3px; animation-duration: 10.1s; animation-delay: -0.3s;"></span>
+    
+      <span class="ember" style="left: 73.3%; width: 4px; height: 4px; animation-duration: 9.5s; animation-delay: -5.9s;"></span>
+    
+      <span class="ember" style="left: 65.6%; width: 3px; height: 3px; animation-duration: 10.7s; animation-delay: -4.9s;"></span>
+    
+      <span class="ember" style="left: 93%; width: 3px; height: 3px; animation-duration: 12.9s; animation-delay: -3.4s;"></span>
+    
+      <span class="ember" style="left: 45.9%; width: 2px; height: 2px; animation-duration: 12.5s; animation-delay: -6.5s;"></span>
+    
+  
+
+  <div style="height: 52px; flex-shrink: 0; box-sizing: border-box; padding: 0px 18px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 220, 190, 0.08); position: relative; z-index: 10;">
+    <a href="index.html" class="ev-back" style="font-family: &quot;Hanken Grotesk&quot;, sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; padding: 12px 0px;">← Festivals</a>
+    <span style="font-family: &quot;Cormorant Garamond&quot;, serif; font-size: 21px; letter-spacing: 2px; color: rgb(239, 230, 245);">Eurielle</span>
+    <a href="index.html" class="ev-lore" data-entry="calanmai" style="display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 0px 10px; border: 1px solid rgba(230, 225, 240, 0.28); border-radius: 2px; background: rgba(5, 5, 12, 0.45); font-family: &quot;Hanken Grotesk&quot;, sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none;"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5C6.5 4 9.5 4 12 6c2.5-2 5.5-2 8-.5V19c-2.5-1.5-5.5-1.5-8 .5-2.5-2-5.5-2-8-.5z"></path><path d="M12 6v13.5"></path></svg>Lorebook</a>
+  </div>
+
+  
+  <div style="position: relative; height: 262px; flex-shrink: 0;">
+    <figure class="pol" style="left: 10px; top: 26px; width: 170px; transform: rotate(-8deg); z-index: 1;">
+      <span class="tape" style="left: 50px; top: -9px; transform: rotate(-4deg);"></span>
+      <div class="ph" style="height: 124px;">
+        <img src="../assets/fn-crowns.webp" alt="Faeries in flower crowns laughing by the bonfires" style="object-position: 50% 42%;">
+      </div>
+      <div class="cap"></div>
+    </figure>
+    <figure class="pol" style="left: 208px; top: 20px; width: 170px; transform: rotate(7deg); z-index: 1;">
+      <span class="pin" style="left: 78px; top: 3px;"></span>
+      <div class="ph" style="height: 124px;">
+        <img src="../assets/fn-dance.webp" alt="A crowd dancing between the bonfires" style="object-position: 50% 45%;">
+      </div>
+      <div class="cap"></div>
+    </figure>
+    <figure class="pol" style="left: 112px; top: 74px; width: 166px; transform: rotate(-2deg); z-index: 2;">
+      <span class="tape" style="left: 48px; top: -10px; transform: rotate(3deg);"></span>
+      <div class="ph" style="height: 118px;">
+        <img src="../assets/fn-feast.webp" alt="A feast table of pomegranates, grapes and goblets by the fires" style="object-position: 50% 55%;">
+      </div>
+      <div class="cap"></div>
+    </figure>
+  </div>
+
+  
+  <div class="bill-wrap" style="margin: -20px 18px 0px; transform: rotate(-1deg); z-index: 5;">
+    <span class="nail"></span>
+    <div class="bill">
+      <div class="glow"></div>
+      <div style="position: relative; display: flex; flex-direction: column; gap: 22px;">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center;">
+          <span class="sc" style="font-size: 12px; letter-spacing: 4px; color: rgb(122, 38, 20);">The Spring Court</span>
+          <h1 style="margin: 4px 0px 0px; font-family: &quot;IM Fell English&quot;, serif; font-weight: 400; font-size: 56px; line-height: 1; color: rgb(43, 26, 16);">Calanmai</h1>
+          <span style="font-family: &quot;IM Fell English&quot;, serif; font-style: italic; font-size: 20px; color: rgb(90, 42, 20);">— Fire Night —</span>
+          <span aria-hidden="true" style="margin-top: 4px; font-size: 11px; letter-spacing: 9px; color: rgb(160, 56, 28);">✦ ✦ ✦</span>
+        </div>
+
+        <p style="margin: 0px; font-family: &quot;Cormorant Garamond&quot;, serif; font-style: italic; font-size: 18px; line-height: 1.5; text-align: center; color: rgb(61, 36, 20);">Bonfires burn on the hills, and the drums carry through the woods long into the night. The air is thick with smoke and wild magic, and it is hard to tell where the music ends and your own heartbeat begins.</p>
+
+        <section>
+          <h2 class="h">When &amp; Where</h2>
+          <p class="body">Once a year, in spring, across the Spring Court. The bonfires are lit on the hillsides at nightfall, and the revelry spills into the surrounding woods.</p>
+        </section>
+
+        <section>
+          <h2 class="h">Customs</h2>
+          <ul class="list">
+            <li>Faeries gather around the bonfires to drink, dance and revel until dawn.</li>
+            <li>The night belongs to the drums, and their rhythm draws revelers toward the hills.</li>
+            <li>At the height of the night, the High Lord performs the Great Rite: a sacred union in a cave on the hill. His magic draws a chosen partner to him, and their joining pours power back into the land for the year ahead.</li>
+          </ul>
+        </section>
+
+        <section class="warn">
+          <h2 class="warn-h">✦ Fair Warning ✦</h2>
+          <p>Fire Night is a night of sexual freedom. The magic in the air stirs desire in everyone it touches, and revelers pair off freely by the fires and in the woods. If that is not what you came for, stay indoors.</p>
+        </section>
+
+        <section>
+          <h2 class="h">Visitor Etiquette</h2>
+          <ul class="list">
+            <li>Mortals are advised to stay indoors. The magic runs wild on Fire Night, and not every faerie at the fires is friendly.</li>
+            <li>The Great Rite belongs to the High Lord. Do not follow anyone to the cave.</li>
+            <li>Keep to the firelight. Do not wander the woods alone.</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <div class="slip" style="right: -8px; bottom: -84px; width: 250px; transform: rotate(3deg); z-index: 6;">
+      <span class="pin" style="left: 118px; top: 6px;"></span>
+      <div class="sc" style="font-size: 13px; letter-spacing: 3px; color: rgb(122, 38, 20); margin-bottom: 6px;">Local Tip</div>
+      <p style="margin: 0px; font-family: Caveat, cursive; font-weight: 500; font-size: 21px; line-height: 1.15;">Stay away from the cave mouth. The closer you are to the drums, the heavier the music will compel you.</p>
+    </div>
+  </div>
+
+  
+  <div style="position: relative; height: 420px; flex-shrink: 0; margin-top: 96px;">
+    <figure class="pol" style="left: 16px; top: 10px; width: 168px; transform: rotate(5deg); z-index: 1;">
+      <span class="pin" style="left: 77px; top: 3px;"></span>
+      <div class="ph" style="height: 196px;">
+        <img src="../assets/fn-moonfire.webp" alt="A red-haired faerie laughing by a bonfire in the woods beneath the moon" style="object-position: 3% 50%;">
+      </div>
+      <div class="cap"></div>
+    </figure>
+    <figure class="pol" style="left: 198px; top: 0px; width: 172px; transform: rotate(-4deg); z-index: 2;">
+      <span class="tape" style="left: 52px; top: -9px; transform: rotate(-3deg);"></span>
+      <div class="ph" style="height: 200px;">
+        <img src="../assets/fn-kiss.webp" alt="Revelers laughing and embracing at a firelit feast" style="object-position: 55% 50%;">
+      </div>
+      <div class="cap"></div>
+    </figure>
+    <figure class="pol" style="left: 104px; top: 214px; width: 180px; transform: rotate(-2deg); z-index: 3;">
+      <span class="tape" style="left: 55px; top: -10px; transform: rotate(4deg);"></span>
+      <div class="ph" style="height: 140px;">
+        <img src="../assets/fn-masks.webp" alt="Masked revelers toasting in front of a bonfire" style="object-position: 40% 45%;">
+      </div>
+      <div class="cap"></div>
+    </figure>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var phone=true, html=document.documentElement;
+  function fit(){
+    var w=window.innerWidth, z=1;
+    if(phone){ z=Math.max(.8,Math.min(1.35,w/390)); }
+    else if(w<1440){ z=Math.max(.5,w/1440); }
+    html.style.zoom=z;
+  }
+  fit(); window.addEventListener('resize',fit);
+  var inFrame=window.parent&&window.parent!==window;
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a.ev-back, a.ev-lore');
+    if(!a||!inFrame) return;
+    e.preventDefault();
+    if(a.classList.contains('ev-back')) window.parent.postMessage('eurielle-close-guide','*');
+    else window.parent.postMessage({type:'eurielle-open-entry',id:a.getAttribute('data-entry')},'*');
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&inFrame) window.parent.postMessage('eurielle-close-guide','*'); });
+})();
+</script>
+</body>
+</html>

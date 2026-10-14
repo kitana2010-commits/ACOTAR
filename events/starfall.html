@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Starfall · Eurielle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Cormorant+SC:wght@400;500;600&amp;family=Hanken+Grotesk:wght@400;500&amp;family=Caveat:wght@500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#010103}
+a{color:#b9c0d8}a:hover{color:#ffffff}
+.scene{position:relative;overflow:hidden;background-color:#010103;
+  background-image:
+    radial-gradient(1px 1px at 11px 17px, rgba(255,255,255,.75), transparent),
+    radial-gradient(1px 1px at 29px 5px, rgba(220,228,255,.45), transparent),
+    radial-gradient(1px 1px at 7px 41px, rgba(255,255,255,.55), transparent),
+    radial-gradient(1px 1px at 48px 30px, rgba(225,232,255,.4), transparent),
+    radial-gradient(1px 1px at 62px 71px, rgba(255,255,255,.6), transparent),
+    radial-gradient(1px 1px at 19px 88px, rgba(220,228,255,.35), transparent),
+    radial-gradient(1.3px 1.3px at 90px 44px, rgba(255,255,255,.7), transparent),
+    radial-gradient(1px 1px at 120px 130px, rgba(255,255,255,.5), transparent),
+    radial-gradient(1.4px 1.4px at 170px 60px, rgba(240,244,255,.8), transparent),
+    radial-gradient(1px 1px at 33px 160px, rgba(220,228,255,.45), transparent),
+    radial-gradient(ellipse 1400px 700px at 50% -20%, rgba(12,16,48,.55), transparent 70%),
+    radial-gradient(ellipse 900px 500px at 50% 110%, rgba(8,12,36,.6), transparent 70%);
+  background-size:53px 53px,71px 71px,67px 67px,97px 97px,113px 113px,131px 131px,149px 149px,173px 173px,211px 211px,239px 239px,auto,auto;}
+.band{position:absolute;left:50%;top:80px;width:2600px;height:360px;margin-left:-1300px;transform:rotate(-18deg);pointer-events:none;
+  background:radial-gradient(ellipse 50% 50% at 50% 50%, rgba(140,150,220,.07), transparent 70%);filter:blur(24px)}
+.band-dust{position:absolute;left:50%;top:80px;width:2600px;height:360px;margin-left:-1300px;transform:rotate(-18deg);pointer-events:none;opacity:.7;
+  background-image:
+    radial-gradient(.8px .8px at 5px 9px, rgba(255,255,255,.9), transparent),
+    radial-gradient(.8px .8px at 19px 3px, rgba(255,255,255,.6), transparent),
+    radial-gradient(.8px .8px at 13px 21px, rgba(255,255,255,.7), transparent),
+    radial-gradient(.8px .8px at 27px 15px, rgba(255,255,255,.5), transparent);
+  background-size:31px 29px;
+  -webkit-mask-image:radial-gradient(ellipse 46% 40% at 50% 50%, #000 0%, transparent 78%);
+  mask-image:radial-gradient(ellipse 46% 40% at 50% 50%, #000 0%, transparent 78%)}
+.star{position:absolute;border-radius:50%;background:#f4f6ff;pointer-events:none}
+.star.tw{animation:twinkle ease-in-out infinite}
+.star.bright{box-shadow:0 0 5px 1px rgba(220,228,255,.85)}
+.star.bright::before,.star.bright::after{content:"";position:absolute;left:50%;top:50%}
+.star.bright::before{width:16px;height:1px;margin:-.5px 0 0 -8px;background:linear-gradient(90deg,transparent,rgba(235,240,255,.8),transparent)}
+.star.bright::after{width:1px;height:16px;margin:-8px 0 0 -.5px;background:linear-gradient(180deg,transparent,rgba(235,240,255,.8),transparent)}
+@keyframes twinkle{0%,100%{opacity:.2}50%{opacity:1}}
+.shoot{position:absolute;width:260px;height:1.5px;border-radius:2px;pointer-events:none;opacity:0;
+  background:linear-gradient(90deg, rgba(90,255,170,0), rgba(130,255,190,.45) 65%, #e6fff1);
+  filter:drop-shadow(0 0 6px rgba(90,255,160,.85));
+  animation:shoot cubic-bezier(.3,.1,.5,1) infinite}
+.shoot::after{content:"";position:absolute;right:-2px;top:-2.5px;width:6px;height:6px;border-radius:50%;
+  background:#effff6;box-shadow:0 0 10px 3px rgba(120,255,180,.95),0 0 28px 8px rgba(60,230,140,.4)}
+@keyframes shoot{
+  0%{transform:translate(0,0) rotate(24deg);opacity:0}
+  1%{opacity:1}
+  7%{transform:translate(680px,303px) rotate(24deg);opacity:0}
+  100%{transform:translate(680px,303px) rotate(24deg);opacity:0}}
+/* silver-framed photos, pinned like Fire Night */
+.sf{position:absolute;margin:0;box-sizing:border-box;padding:11px;
+  background:linear-gradient(135deg,#f6f7fb 0%,#a3a9bc 16%,#eef0f6 32%,#7f8699 50%,#dfe2ec 68%,#8d94a8 84%,#f1f3f9 100%);
+  box-shadow:0 22px 44px rgba(0,0,0,.85),0 3px 8px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.65),inset 0 0 0 2px rgba(60,66,84,.35);
+  transition:transform .35s ease}
+.sf:hover{transform:rotate(0deg) translateY(-6px) scale(1.03)!important;z-index:9!important}
+.sf::before{content:"";position:absolute;inset:5px;border:1px solid rgba(70,76,96,.45);box-shadow:inset 0 0 0 1px rgba(255,255,255,.4);pointer-events:none}
+.ph{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#5d6580;
+  background:#07091a;box-shadow:inset 0 0 0 1px rgba(20,22,34,.9)}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ph::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 24px rgba(0,0,0,.55)}
+.pin{position:absolute;width:15px;height:15px;border-radius:50%;z-index:3;
+  background:radial-gradient(circle at 35% 30%, #ffffff, #c6ccdc 45%, #6d748c 80%, #444a60);box-shadow:0 4px 6px rgba(0,0,0,.7)}
+/* the invitation */
+.card{position:absolute;box-sizing:border-box;padding:74px 66px 90px;color:#e6e8f2;
+  background:
+    radial-gradient(1px 1px at 7px 11px, rgba(255,255,255,.035), transparent),
+    radial-gradient(1px 1px at 17px 4px, rgba(0,0,0,.25), transparent),
+    radial-gradient(ellipse 100% 60% at 50% 0%, #141b3c 0%, transparent 70%),
+    linear-gradient(180deg,#0e1430 0%,#0a0f26 50%,#080c1f 100%);
+  background-size:23px 19px,29px 23px,auto,auto;
+  border-radius:3px;
+  box-shadow:0 2px 0 rgba(255,255,255,.04) inset,0 34px 70px rgba(0,0,0,.9),0 6px 14px rgba(0,0,0,.6)}
+.foilframe{position:absolute;inset:18px;pointer-events:none;border:1.5px solid transparent;
+  border-image:linear-gradient(135deg,#f3f5fb,#8e95aa 25%,#ffffff 45%,#8a91a6 65%,#e7eaf3 85%,#9aa1b5) 1}
+.foilframe2{position:absolute;inset:26px;pointer-events:none;border:1px solid rgba(205,212,232,.32)}
+.cn{position:absolute;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:13px;line-height:1;color:#eef0f7;background:#0b1028;border-radius:50%;z-index:2;text-shadow:0 0 6px rgba(210,218,245,.7)}
+.foil{background:linear-gradient(100deg,#9ba2b7 0%,#f6f7fc 18%,#b5bbcc 36%,#ffffff 50%,#a4abc0 68%,#eef0f7 86%,#9ba2b7 100%);
+  background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+  animation:foil 9s linear infinite}
+@keyframes foil{0%{background-position:0% 0}100%{background-position:220% 0}}
+.sc{font-family:'Cormorant SC',serif;font-weight:600;letter-spacing:5px;color:#cdd2e3}
+.sec{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.sec h2{margin:0;font-family:'Cormorant SC',serif;font-weight:600;font-size:17px;letter-spacing:6px;color:#d6dbea}
+.sec p{margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:20px;line-height:1.6;color:#e6e8f2}
+.div{font-size:10px;letter-spacing:14px;color:#aab1c8;text-align:center;line-height:1}
+.seal{position:absolute;left:50%;bottom:-32px;width:68px;height:68px;margin-left:-34px;border-radius:50%;z-index:3;
+  display:flex;align-items:center;justify-content:center;font-size:26px;color:#3a4058;
+  background:radial-gradient(circle at 35% 30%, #ffffff, #d2d7e4 38%, #959cb2 70%, #5d6480);
+  box-shadow:0 8px 18px rgba(0,0,0,.7), inset 0 0 0 4px rgba(255,255,255,.28), inset 0 -5px 9px rgba(0,0,0,.28)}
+.note{position:absolute;box-sizing:border-box;padding:26px 24px 20px;background:#efefe9;color:#262a3c;
+  box-shadow:0 16px 30px rgba(0,0,0,.75),inset 0 0 26px rgba(120,120,110,.2)}
+@media (prefers-reduced-motion: reduce){.star.tw,.shoot,.foil{animation:none}}
+</style>
+<style>html,body{margin:0}body{background:inherit}</style>
+</head>
+<body>
+
+<div class="scene" style="width: 100%; height: 1560px;">
+
+  <div class="band"></div>
+  <div class="band-dust"></div>
+
+  
+    <span class="star tw bright" style="left: 2.71%; top: 465px; width: 2px; height: 2px; opacity: 0.39; animation-duration: 3.6s; animation-delay: -0.4s;"></span>
+  
+    <span class="star tw" style="left: 7.39%; top: 687px; width: 1.3px; height: 1.3px; opacity: 0.38; animation-duration: 6.6s; animation-delay: -1.2s;"></span>
+  
+    <span class="star" style="left: 36.42%; top: 505px; width: 1.1px; height: 1.1px; opacity: 0.93;"></span>
+  
+    <span class="star" style="left: 33.52%; top: 1403px; width: 1px; height: 1px; opacity: 0.68;"></span>
+  
+    <span class="star tw" style="left: 94.08%; top: 980px; width: 0.8px; height: 0.8px; opacity: 0.85; animation-duration: 3s; animation-delay: -1.6s;"></span>
+  
+    <span class="star" style="left: 53.79%; top: 1408px; width: 1.4px; height: 1.4px; opacity: 0.57;"></span>
+  
+    <span class="star" style="left: 56.88%; top: 1084px; width: 1.3px; height: 1.3px; opacity: 0.82;"></span>
+  
+    <span class="star" style="left: 56.65%; top: 245px; width: 1.1px; height: 1.1px; opacity: 0.34;"></span>
+  
+    <span class="star tw" style="left: 57.48%; top: 1316px; width: 1.1px; height: 1.1px; opacity: 0.89; animation-duration: 2.5s; animation-delay: -5.4s;"></span>
+  
+    <span class="star" style="left: 56.83%; top: 153px; width: 1.1px; height: 1.1px; opacity: 0.95;"></span>
+  
+    <span class="star tw" style="left: 37.78%; top: 490px; width: 0.5px; height: 0.5px; opacity: 0.4; animation-duration: 5.4s; animation-delay: -7s;"></span>
+  
+    <span class="star tw" style="left: 91.6%; top: 1163px; width: 1.2px; height: 1.2px; opacity: 0.94; animation-duration: 6.2s; animation-delay: -4.2s;"></span>
+  
+    <span class="star tw" style="left: 81.22%; top: 1001px; width: 1.2px; height: 1.2px; opacity: 0.37; animation-duration: 5.7s; animation-delay: -7.4s;"></span>
+  
+    <span class="star tw" style="left: 19.75%; top: 263px; width: 0.9px; height: 0.9px; opacity: 0.67; animation-duration: 2.6s; animation-delay: -4.2s;"></span>
+  
+    <span class="star" style="left: 74.79%; top: 160px; width: 1.4px; height: 1.4px; opacity: 0.93;"></span>
+  
+    <span class="star tw" style="left: 66.55%; top: 374px; width: 0.9px; height: 0.9px; opacity: 0.7; animation-duration: 4.3s; animation-delay: -5.5s;"></span>
+  
+    <span class="star" style="left: 95.73%; top: 792px; width: 1px; height: 1px; opacity: 0.79;"></span>
+  
+    <span class="star tw" style="left: 45.59%; top: 718px; width: 0.8px; height: 0.8px; opacity: 0.88; animation-duration: 4.8s; animation-delay: -3.7s;"></span>
+  
+    <span class="star tw" style="left: 92.57%; top: 301px; width: 1.6px; height: 1.6px; opacity: 0.81; animation-duration: 4.2s; animation-delay: -0.3s;"></span>
+  
+    <span class="star tw bright" style="left: 50.11%; top: 105px; width: 2px; height: 2px; opacity: 0.99; animation-duration: 7s; animation-delay: -7.2s;"></span>
+  
+    <span class="star tw" style="left: 52.46%; top: 268px; width: 1.5px; height: 1.5px; opacity: 0.45; animation-duration: 6.6s; animation-delay: -7.5s;"></span>
+  
+    <span class="star tw" style="left: 49.78%; top: 986px; width: 1.4px; height: 1.4px; opacity: 0.77; animation-duration: 4.6s; animation-delay: -4.9s;"></span>
+  
+    <span class="star" style="left: 10.17%; top: 1234px; width: 0.5px; height: 0.5px; opacity: 0.42;"></span>
+  
+    <span class="star" style="left: 8.44%; top: 352px; width: 1.2px; height: 1.2px; opacity: 0.35;"></span>
+  
+    <span class="star tw" style="left: 41.1%; top: 325px; width: 1.5px; height: 1.5px; opacity: 0.74; animation-duration: 6.5s; animation-delay: -6.2s;"></span>
+  
+    <span class="star" style="left: 87.78%; top: 210px; width: 0.8px; height: 0.8px; opacity: 0.83;"></span>
+  
+    <span class="star tw" style="left: 57.51%; top: 1535px; width: 1.3px; height: 1.3px; opacity: 0.86; animation-duration: 7.4s; animation-delay: -2.5s;"></span>
+  
+    <span class="star tw" style="left: 14.84%; top: 173px; width: 0.7px; height: 0.7px; opacity: 0.42; animation-duration: 4.5s; animation-delay: -1.4s;"></span>
+  
+    <span class="star tw" style="left: 54.5%; top: 1253px; width: 1.5px; height: 1.5px; opacity: 0.52; animation-duration: 5.2s; animation-delay: -7.5s;"></span>
+  
+    <span class="star" style="left: 76.85%; top: 638px; width: 0.7px; height: 0.7px; opacity: 0.5;"></span>
+  
+    <span class="star" style="left: 1.48%; top: 1180px; width: 0.9px; height: 0.9px; opacity: 0.32;"></span>
+  
+    <span class="star tw" style="left: 63.01%; top: 1306px; width: 1.1px; height: 1.1px; opacity: 0.47; animation-duration: 4.5s; animation-delay: -7.5s;"></span>
+  
+    <span class="star tw" style="left: 3.69%; top: 803px; width: 0.9px; height: 0.9px; opacity: 0.66; animation-duration: 7.4s; animation-delay: -4.7s;"></span>
+  
+    <span class="star" style="left: 39.36%; top: 294px; width: 0.9px; height: 0.9px; opacity: 0.6;"></span>
+  
+    <span class="star" style="left: 19.35%; top: 640px; width: 1.1px; height: 1.1px; opacity: 0.65;"></span>
+  
+    <span class="star" style="left: 72.78%; top: 1091px; width: 0.6px; height: 0.6px; opacity: 0.81;"></span>
+  
+    <span class="star tw" style="left: 72.2%; top: 1445px; width: 1.2px; height: 1.2px; opacity: 0.49; animation-duration: 6.2s; animation-delay: -6.2s;"></span>
+  
+    <span class="star tw" style="left: 81.16%; top: 270px; width: 1.6px; height: 1.6px; opacity: 0.95; animation-duration: 3.8s; animation-delay: -7s;"></span>
+  
+    <span class="star tw bright" style="left: 46.25%; top: 1061px; width: 2px; height: 2px; opacity: 0.37; animation-duration: 5.4s; animation-delay: -7.6s;"></span>
+  
+    <span class="star tw" style="left: 43.69%; top: 599px; width: 0.8px; height: 0.8px; opacity: 0.63; animation-duration: 3.6s; animation-delay: -2.1s;"></span>
+  
+    <span class="star" style="left: 42.76%; top: 611px; width: 1.4px; height: 1.4px; opacity: 0.56;"></span>
+  
+    <span class="star" style="left: 41.92%; top: 1055px; width: 1.4px; height: 1.4px; opacity: 0.65;"></span>
+  
+    <span class="star tw" style="left: 9.83%; top: 186px; width: 1.2px; height: 1.2px; opacity: 0.77; animation-duration: 5.4s; animation-delay: -3.7s;"></span>
+  
+    <span class="star" style="left: 50.04%; top: 146px; width: 0.6px; height: 0.6px; opacity: 0.37;"></span>
+  
+    <span class="star tw" style="left: 48.81%; top: 417px; width: 1px; height: 1px; opacity: 0.5; animation-duration: 3.3s; animation-delay: -1.8s;"></span>
+  
+    <span class="star tw" style="left: 94.65%; top: 675px; width: 1.4px; height: 1.4px; opacity: 0.4; animation-duration: 6.9s; animation-delay: -7.1s;"></span>
+  
+    <span class="star" style="left: 23.92%; top: 512px; width: 1.3px; height: 1.3px; opacity: 0.32;"></span>
+  
+    <span class="star" style="left: 97.67%; top: 612px; width: 0.6px; height: 0.6px; opacity: 0.31;"></span>
+  
+    <span class="star tw" style="left: 64.97%; top: 656px; width: 1px; height: 1px; opacity: 0.7; animation-duration: 3.9s; animation-delay: -3.5s;"></span>
+  
+    <span class="star" style="left: 75.24%; top: 969px; width: 1.6px; height: 1.6px; opacity: 0.58;"></span>
+  
+    <span class="star" style="left: 63.54%; top: 523px; width: 1.5px; height: 1.5px; opacity: 0.86;"></span>
+  
+    <span class="star tw" style="left: 39.68%; top: 830px; width: 1px; height: 1px; opacity: 0.85; animation-duration: 6.3s; animation-delay: -2.9s;"></span>
+  
+    <span class="star tw" style="left: 43.19%; top: 958px; width: 0.9px; height: 0.9px; opacity: 0.85; animation-duration: 2.7s; animation-delay: -6s;"></span>
+  
+    <span class="star tw" style="left: 12.86%; top: 941px; width: 1px; height: 1px; opacity: 0.34; animation-duration: 4s; animation-delay: -3.3s;"></span>
+  
+    <span class="star tw" style="left: 37.93%; top: 1341px; width: 0.6px; height: 0.6px; opacity: 0.86; animation-duration: 3.9s; animation-delay: -3.2s;"></span>
+  
+    <span class="star" style="left: 64.85%; top: 1122px; width: 1.5px; height: 1.5px; opacity: 0.96;"></span>
+  
+    <span class="star" style="left: 90.48%; top: 235px; width: 0.8px; height: 0.8px; opacity: 0.32;"></span>
+  
+    <span class="star tw bright" style="left: 63.66%; top: 982px; width: 2px; height: 2px; opacity: 0.82; animation-duration: 6s; animation-delay: -5s;"></span>
+  
+    <span class="star" style="left: 20.81%; top: 850px; width: 1.2px; height: 1.2px; opacity: 0.76;"></span>
+  
+    <span class="star tw" style="left: 90.14%; top: 1544px; width: 1.2px; height: 1.2px; opacity: 0.77; animation-duration: 7.2s; animation-delay: -0.3s;"></span>
+  
+    <span class="star tw" style="left: 89.63%; top: 601px; width: 1.1px; height: 1.1px; opacity: 0.6; animation-duration: 4.7s; animation-delay: -2s;"></span>
+  
+    <span class="star tw" style="left: 88.08%; top: 143px; width: 0.8px; height: 0.8px; opacity: 0.51; animation-duration: 6.8s; animation-delay: -1.6s;"></span>
+  
+    <span class="star tw" style="left: 48.72%; top: 1390px; width: 1.5px; height: 1.5px; opacity: 0.49; animation-duration: 2.6s; animation-delay: 0s;"></span>
+  
+    <span class="star" style="left: 28.1%; top: 1482px; width: 1.6px; height: 1.6px; opacity: 0.83;"></span>
+  
+    <span class="star" style="left: 80.21%; top: 1325px; width: 0.7px; height: 0.7px; opacity: 0.33;"></span>
+  
+    <span class="star tw" style="left: 68.24%; top: 1240px; width: 1.3px; height: 1.3px; opacity: 0.43; animation-duration: 5.2s; animation-delay: -7s;"></span>
+  
+    <span class="star" style="left: 51.38%; top: 571px; width: 0.6px; height: 0.6px; opacity: 0.98;"></span>
+  
+    <span class="star tw" style="left: 27.62%; top: 1309px; width: 1.6px; height: 1.6px; opacity: 0.58; animation-duration: 6.8s; animation-delay: -7.9s;"></span>
+  
+    <span class="star tw" style="left: 72.01%; top: 1208px; width: 1.1px; height: 1.1px; opacity: 0.42; animation-duration: 3.5s; animation-delay: -7.6s;"></span>
+  
+    <span class="star" style="left: 79.04%; top: 1275px; width: 0.9px; height: 0.9px; opacity: 0.98;"></span>
+  
+    <span class="star" style="left: 61.39%; top: 119px; width: 1.2px; height: 1.2px; opacity: 0.74;"></span>
+  
+    <span class="star" style="left: 67.06%; top: 526px; width: 1px; height: 1px; opacity: 0.93;"></span>
+  
+    <span class="star tw" style="left: 79.47%; top: 825px; width: 1px; height: 1px; opacity: 0.66; animation-duration: 5.3s; animation-delay: 0s;"></span>
+  
+    <span class="star tw" style="left: 90.99%; top: 1276px; width: 0.5px; height: 0.5px; opacity: 0.38; animation-duration: 6.3s; animation-delay: -1.3s;"></span>
+  
+    <span class="star" style="left: 30.12%; top: 1423px; width: 1.3px; height: 1.3px; opacity: 0.89;"></span>
+  
+    <span class="star" style="left: 92.26%; top: 661px; width: 0.9px; height: 0.9px; opacity: 0.49;"></span>
+  
+    <span class="star tw bright" style="left: 66.45%; top: 861px; width: 2px; height: 2px; opacity: 0.47; animation-duration: 3.6s; animation-delay: -1.8s;"></span>
+  
+    <span class="star tw" style="left: 18.32%; top: 1239px; width: 1.4px; height: 1.4px; opacity: 0.33; animation-duration: 3.5s; animation-delay: -7.4s;"></span>
+  
+    <span class="star" style="left: 59.46%; top: 651px; width: 1.6px; height: 1.6px; opacity: 0.39;"></span>
+  
+    <span class="star" style="left: 87.78%; top: 777px; width: 0.8px; height: 0.8px; opacity: 0.3;"></span>
+  
+    <span class="star" style="left: 24.36%; top: 98px; width: 0.6px; height: 0.6px; opacity: 0.65;"></span>
+  
+    <span class="star tw" style="left: 86.84%; top: 737px; width: 1.1px; height: 1.1px; opacity: 0.32; animation-duration: 2.6s; animation-delay: -1.8s;"></span>
+  
+    <span class="star" style="left: 18.34%; top: 1203px; width: 0.9px; height: 0.9px; opacity: 0.74;"></span>
+  
+    <span class="star" style="left: 2.83%; top: 964px; width: 1.3px; height: 1.3px; opacity: 0.81;"></span>
+  
+    <span class="star" style="left: 97.79%; top: 541px; width: 1.3px; height: 1.3px; opacity: 0.64;"></span>
+  
+    <span class="star tw" style="left: 79.75%; top: 935px; width: 1.2px; height: 1.2px; opacity: 0.95; animation-duration: 6.6s; animation-delay: -7.6s;"></span>
+  
+    <span class="star tw" style="left: 50.63%; top: 1428px; width: 1.2px; height: 1.2px; opacity: 0.51; animation-duration: 6.7s; animation-delay: -0.5s;"></span>
+  
+    <span class="star tw" style="left: 65.57%; top: 784px; width: 0.6px; height: 0.6px; opacity: 0.35; animation-duration: 4s; animation-delay: -3.9s;"></span>
+  
+    <span class="star tw" style="left: 96.76%; top: 738px; width: 1px; height: 1px; opacity: 0.98; animation-duration: 6.5s; animation-delay: -6.9s;"></span>
+  
+    <span class="star" style="left: 32.38%; top: 172px; width: 1.1px; height: 1.1px; opacity: 0.94;"></span>
+  
+    <span class="star" style="left: 76.68%; top: 1406px; width: 0.7px; height: 0.7px; opacity: 0.98;"></span>
+  
+    <span class="star tw" style="left: 77.88%; top: 676px; width: 0.8px; height: 0.8px; opacity: 0.99; animation-duration: 5s; animation-delay: -3.8s;"></span>
+  
+    <span class="star tw" style="left: 13.95%; top: 941px; width: 1.5px; height: 1.5px; opacity: 0.95; animation-duration: 4.2s; animation-delay: -6s;"></span>
+  
+    <span class="star tw" style="left: 65.82%; top: 1138px; width: 1.2px; height: 1.2px; opacity: 0.59; animation-duration: 3s; animation-delay: -1.7s;"></span>
+  
+    <span class="star tw" style="left: 44.08%; top: 139px; width: 1.2px; height: 1.2px; opacity: 0.33; animation-duration: 3.5s; animation-delay: -1s;"></span>
+  
+    <span class="star tw bright" style="left: 62.27%; top: 1433px; width: 2px; height: 2px; opacity: 0.38; animation-duration: 2.7s; animation-delay: -3.7s;"></span>
+  
+    <span class="star" style="left: 2.3%; top: 1546px; width: 0.9px; height: 0.9px; opacity: 0.73;"></span>
+  
+    <span class="star tw" style="left: 46.23%; top: 966px; width: 1.4px; height: 1.4px; opacity: 0.65; animation-duration: 4.9s; animation-delay: -1.5s;"></span>
+  
+    <span class="star tw" style="left: 93.42%; top: 241px; width: 1px; height: 1px; opacity: 0.35; animation-duration: 3s; animation-delay: -5.5s;"></span>
+  
+    <span class="star tw" style="left: 94.34%; top: 789px; width: 0.8px; height: 0.8px; opacity: 0.94; animation-duration: 5.4s; animation-delay: -7s;"></span>
+  
+    <span class="star tw" style="left: 2.48%; top: 109px; width: 1.1px; height: 1.1px; opacity: 0.75; animation-duration: 6.6s; animation-delay: -5s;"></span>
+  
+    <span class="star" style="left: 32.57%; top: 553px; width: 0.5px; height: 0.5px; opacity: 0.32;"></span>
+  
+    <span class="star" style="left: 35.4%; top: 314px; width: 0.9px; height: 0.9px; opacity: 0.71;"></span>
+  
+    <span class="star tw" style="left: 88.91%; top: 1416px; width: 1.5px; height: 1.5px; opacity: 0.43; animation-duration: 6.1s; animation-delay: -7.3s;"></span>
+  
+    <span class="star tw" style="left: 99.73%; top: 572px; width: 0.7px; height: 0.7px; opacity: 0.82; animation-duration: 6.7s; animation-delay: -1.6s;"></span>
+  
+    <span class="star tw" style="left: 91.51%; top: 1195px; width: 1.5px; height: 1.5px; opacity: 0.8; animation-duration: 3.6s; animation-delay: -3.6s;"></span>
+  
+    <span class="star tw" style="left: 55.48%; top: 779px; width: 1.2px; height: 1.2px; opacity: 0.71; animation-duration: 2.9s; animation-delay: -2.2s;"></span>
+  
+    <span class="star tw" style="left: 94.67%; top: 909px; width: 1.3px; height: 1.3px; opacity: 0.51; animation-duration: 5.3s; animation-delay: -5.6s;"></span>
+  
+    <span class="star" style="left: 33.69%; top: 587px; width: 0.6px; height: 0.6px; opacity: 0.85;"></span>
+  
+    <span class="star tw" style="left: 89.14%; top: 442px; width: 1.2px; height: 1.2px; opacity: 0.31; animation-duration: 6s; animation-delay: -0.7s;"></span>
+  
+    <span class="star tw" style="left: 3.74%; top: 778px; width: 1.5px; height: 1.5px; opacity: 0.38; animation-duration: 7s; animation-delay: -6s;"></span>
+  
+    <span class="star" style="left: 26.78%; top: 435px; width: 1.1px; height: 1.1px; opacity: 0.82;"></span>
+  
+    <span class="star tw" style="left: 83.46%; top: 1440px; width: 1.1px; height: 1.1px; opacity: 0.39; animation-duration: 6.3s; animation-delay: -5s;"></span>
+  
+    <span class="star tw" style="left: 34.41%; top: 90px; width: 1.2px; height: 1.2px; opacity: 0.69; animation-duration: 4.5s; animation-delay: -5.2s;"></span>
+  
+    <span class="star tw bright" style="left: 32.15%; top: 837px; width: 2px; height: 2px; opacity: 1; animation-duration: 7s; animation-delay: -1s;"></span>
+  
+    <span class="star" style="left: 42.7%; top: 789px; width: 1.6px; height: 1.6px; opacity: 0.96;"></span>
+  
+    <span class="star" style="left: 14.41%; top: 1084px; width: 1.5px; height: 1.5px; opacity: 0.74;"></span>
+  
+    <span class="star" style="left: 7.94%; top: 247px; width: 0.5px; height: 0.5px; opacity: 0.54;"></span>
+  
+    <span class="star" style="left: 35.86%; top: 948px; width: 1.4px; height: 1.4px; opacity: 0.44;"></span>
+  
+    <span class="star tw" style="left: 79.24%; top: 612px; width: 1.5px; height: 1.5px; opacity: 0.98; animation-duration: 3.3s; animation-delay: -2.4s;"></span>
+  
+    <span class="star tw" style="left: 66.11%; top: 556px; width: 0.8px; height: 0.8px; opacity: 0.78; animation-duration: 4.4s; animation-delay: -0.8s;"></span>
+  
+    <span class="star tw" style="left: 53.02%; top: 1002px; width: 0.7px; height: 0.7px; opacity: 0.32; animation-duration: 7.1s; animation-delay: -4.4s;"></span>
+  
+    <span class="star tw" style="left: 76.41%; top: 1090px; width: 1.6px; height: 1.6px; opacity: 0.47; animation-duration: 7.2s; animation-delay: -2.3s;"></span>
+  
+    <span class="star" style="left: 32.67%; top: 112px; width: 1.2px; height: 1.2px; opacity: 0.91;"></span>
+  
+    <span class="star tw" style="left: 57.53%; top: 1419px; width: 1.3px; height: 1.3px; opacity: 0.89; animation-duration: 3s; animation-delay: -2.7s;"></span>
+  
+    <span class="star" style="left: 59.9%; top: 1144px; width: 1.2px; height: 1.2px; opacity: 0.48;"></span>
+  
+    <span class="star tw" style="left: 57.69%; top: 986px; width: 1.3px; height: 1.3px; opacity: 0.79; animation-duration: 4.3s; animation-delay: -6s;"></span>
+  
+    <span class="star" style="left: 37.54%; top: 1094px; width: 1.2px; height: 1.2px; opacity: 0.86;"></span>
+  
+    <span class="star tw" style="left: 12.47%; top: 1198px; width: 0.8px; height: 0.8px; opacity: 0.75; animation-duration: 4.2s; animation-delay: -2.1s;"></span>
+  
+    <span class="star tw" style="left: 32.1%; top: 1203px; width: 0.7px; height: 0.7px; opacity: 0.74; animation-duration: 7s; animation-delay: -2.3s;"></span>
+  
+    <span class="star tw" style="left: 39.88%; top: 975px; width: 0.6px; height: 0.6px; opacity: 0.61; animation-duration: 2.9s; animation-delay: -4.5s;"></span>
+  
+    <span class="star" style="left: 5.93%; top: 1471px; width: 0.9px; height: 0.9px; opacity: 0.62;"></span>
+  
+    <span class="star tw" style="left: 8.56%; top: 1322px; width: 1.5px; height: 1.5px; opacity: 0.87; animation-duration: 3.5s; animation-delay: -4.6s;"></span>
+  
+    <span class="star tw bright" style="left: 27.07%; top: 1276px; width: 2px; height: 2px; opacity: 0.3; animation-duration: 5.6s; animation-delay: -0.3s;"></span>
+  
+    <span class="star tw" style="left: 67.63%; top: 833px; width: 0.8px; height: 0.8px; opacity: 0.37; animation-duration: 5.2s; animation-delay: -1.6s;"></span>
+  
+    <span class="star" style="left: 17.02%; top: 617px; width: 0.5px; height: 0.5px; opacity: 0.98;"></span>
+  
+    <span class="star" style="left: 51.17%; top: 1204px; width: 0.5px; height: 0.5px; opacity: 0.44;"></span>
+  
+    <span class="star tw" style="left: 37.05%; top: 881px; width: 1.1px; height: 1.1px; opacity: 0.69; animation-duration: 6.2s; animation-delay: -1.6s;"></span>
+  
+    <span class="star" style="left: 18.35%; top: 1274px; width: 1.1px; height: 1.1px; opacity: 0.75;"></span>
+  
+    <span class="star" style="left: 78.75%; top: 1469px; width: 0.9px; height: 0.9px; opacity: 0.58;"></span>
+  
+    <span class="star tw" style="left: 28.91%; top: 1181px; width: 0.9px; height: 0.9px; opacity: 0.89; animation-duration: 4.9s; animation-delay: -2s;"></span>
+  
+    <span class="star" style="left: 56.21%; top: 1122px; width: 0.6px; height: 0.6px; opacity: 0.36;"></span>
+  
+    <span class="star tw" style="left: 45.24%; top: 543px; width: 0.6px; height: 0.6px; opacity: 0.89; animation-duration: 2.8s; animation-delay: -3.3s;"></span>
+  
+    <span class="star tw" style="left: 3.83%; top: 1013px; width: 1.6px; height: 1.6px; opacity: 0.87; animation-duration: 4.3s; animation-delay: -5s;"></span>
+  
+    <span class="star tw" style="left: 66.82%; top: 1240px; width: 0.6px; height: 0.6px; opacity: 0.94; animation-duration: 4.7s; animation-delay: -2.5s;"></span>
+  
+    <span class="star tw" style="left: 55.93%; top: 998px; width: 0.7px; height: 0.7px; opacity: 0.48; animation-duration: 5s; animation-delay: -0.2s;"></span>
+  
+    <span class="star tw" style="left: 23.71%; top: 1397px; width: 1.1px; height: 1.1px; opacity: 0.79; animation-duration: 6.7s; animation-delay: -7.1s;"></span>
+  
+    <span class="star tw" style="left: 70.29%; top: 1243px; width: 1px; height: 1px; opacity: 0.81; animation-duration: 6.2s; animation-delay: -7.3s;"></span>
+  
+    <span class="star tw" style="left: 76.81%; top: 1226px; width: 0.9px; height: 0.9px; opacity: 0.46; animation-duration: 4.4s; animation-delay: -6.8s;"></span>
+  
+    <span class="star" style="left: 16.9%; top: 1301px; width: 0.6px; height: 0.6px; opacity: 0.61;"></span>
+  
+
+  
+    
+      <span class="shoot" style="left: 51.5%; top: 436px; animation-duration: 19.7s; animation-delay: -3.6s;"></span>
+    
+      <span class="shoot" style="left: 21.7%; top: 302px; animation-duration: 22.2s; animation-delay: -13s;"></span>
+    
+      <span class="shoot" style="left: 12.6%; top: 322px; animation-duration: 23.2s; animation-delay: -17.1s;"></span>
+    
+      <span class="shoot" style="left: 22.4%; top: 152px; animation-duration: 23.1s; animation-delay: -25.2s;"></span>
+    
+  
+
+  <div style="position: absolute; left: 0px; right: 0px; top: 0px; height: 64px; box-sizing: border-box; padding: 0px 48px; display: flex; align-items: center; justify-content: space-between; z-index: 10; border-bottom: 1px solid rgba(200, 210, 255, 0.06);">
+    <a href="index.html" class="ev-back" style="font-family: &quot;Hanken Grotesk&quot;, sans-serif; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; text-decoration: none;">← Festivals &amp; Rites</a>
+    <span style="font-family: &quot;Cormorant Garamond&quot;, serif; font-size: 24px; letter-spacing: 2px; color: rgb(239, 230, 245);">Eurielle</span>
+    <a href="index.html" class="ev-lore" data-entry="starfall" style="display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 0px 14px; border: 1px solid rgba(230, 225, 240, 0.28); border-radius: 2px; background: rgba(5, 5, 12, 0.45); font-family: &quot;Hanken Grotesk&quot;, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none;"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5C6.5 4 9.5 4 12 6c2.5-2 5.5-2 8-.5V19c-2.5-1.5-5.5-1.5-8 .5-2.5-2-5.5-2-8-.5z"></path><path d="M12 6v13.5"></path></svg>Lorebook entry</a>
+  </div>
+
+  <div style="position: absolute; left: 50%; top: 0px; width: 1440px; height: 1560px; margin-left: -720px;">
+
+  
+  <figure class="sf" style="left: 110px; top: 138px; width: 330px; transform: rotate(-6deg); z-index: 1;">
+    <span class="pin" style="left: 158px; top: -4px;"></span>
+    <div class="ph" style="height: 250px;">
+      <img src="../assets/sf-cheer.webp" alt="A crowd cheering as green stars fall over Velaris" style="object-position: 50% 40%;">
+    </div>
+  </figure>
+
+  
+  <figure class="sf" style="left: 58px; top: 470px; width: 300px; transform: rotate(4deg); z-index: 2;">
+    <span class="pin" style="left: 143px; top: -4px;"></span>
+    <div class="ph" style="height: 370px;">
+      <img src="../assets/sf-selfie.webp" alt="A faerie raising a goblet on a rooftop as stars fall" style="object-position: 40% 50%;">
+    </div>
+  </figure>
+
+  
+  <figure class="sf" style="left: 40px; top: 920px; width: 320px; transform: rotate(-5deg); z-index: 3;">
+    <span class="pin" style="left: 22px; top: 6px;"></span>
+    <div class="ph" style="height: 236px;">
+      <img src="../assets/sf-balcony.webp" alt="Friends lounging on a candlelit balcony beneath green falling stars" style="object-position: 50% 55%;">
+    </div>
+  </figure>
+
+  
+  <figure class="sf" style="left: 1010px; top: 118px; width: 330px; transform: rotate(7deg); z-index: 1;">
+    <span class="pin" style="left: 158px; top: -4px;"></span>
+    <div class="ph" style="height: 240px;">
+      <img src="../assets/sf-couple.webp" alt="A couple smiling together on a lantern-lit balcony" style="object-position: 45% 45%;">
+    </div>
+  </figure>
+
+  
+  <figure class="sf" style="left: 1066px; top: 446px; width: 290px; transform: rotate(-5deg); z-index: 2;">
+    <span class="pin" style="left: 138px; top: -4px;"></span>
+    <div class="ph" style="height: 360px;">
+      <img src="../assets/sf-dance.webp" alt="A couple dancing to violin and harp on a starlit terrace" style="object-position: 52% 50%;">
+    </div>
+  </figure>
+
+  
+  <figure class="sf" style="left: 1050px; top: 914px; width: 320px; transform: rotate(4deg); z-index: 3;">
+    <span class="pin" style="left: 153px; top: -4px;"></span>
+    <div class="ph" style="height: 226px;">
+      <img src="../assets/sf-watchers.webp" alt="Friends watching the stars fall over the city and the river" style="object-position: 50% 40%;">
+    </div>
+  </figure>
+
+
+  
+  <div class="card" style="left: 452px; top: 116px; width: 536px; transform: rotate(-1deg); z-index: 5;">
+    <span class="foilframe"></span>
+    <span class="foilframe2"></span>
+    <span class="cn" aria-hidden="true" style="left: 9px; top: 9px;">✦</span>
+    <span class="cn" aria-hidden="true" style="right: 9px; top: 9px;">✦</span>
+    <span class="cn" aria-hidden="true" style="left: 9px; bottom: 9px;">✦</span>
+    <span class="cn" aria-hidden="true" style="right: 9px; bottom: 9px;">✦</span>
+
+    <div style="position: relative; display: flex; flex-direction: column; gap: 24px;">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center;">
+        <span class="sc" style="font-size: 15px;">The Night Court</span>
+        <span style="font-family: &quot;Cormorant Garamond&quot;, serif; font-style: italic; font-size: 20px; color: rgb(185, 192, 214);">celebrates</span>
+        <h1 class="foil" style="margin: 2px 0px 0px; font-family: &quot;Cormorant Garamond&quot;, serif; font-weight: 500; font-size: 60px; line-height: 1; letter-spacing: 9px; padding-left: 9px; text-transform: uppercase;">Starfall</h1>
+        <span style="font-family: &quot;Cormorant Garamond&quot;, serif; font-style: italic; font-size: 22px; color: rgb(211, 216, 232);">in the city of Velaris, once a year</span>
+        <span class="div" aria-hidden="true">✦ ✦ ✦</span>
+      </div>
+
+      <p style="margin: 0px; font-family: &quot;Cormorant Garamond&quot;, serif; font-style: italic; font-weight: 500; font-size: 22px; line-height: 1.6; text-align: center; color: rgb(238, 240, 247);">Starfall is a night of magic and romance. On this one night, Velaris puts out its lights. The whole city climbs to its rooftops and balconies and waits in the dark, until the first star breaks loose from the sky.</p>
+
+      <section class="sec">
+        <h2>When &amp; Where</h2>
+        <p>Once a year, in the Night Court. Velaris is the place to be: the city dims every light so the sky can be seen, and the best views are from the rooftops and the banks of the Sidra.</p>
+      </section>
+
+      <span class="div" aria-hidden="true">✦</span>
+
+      <section class="sec">
+        <h2>Customs</h2>
+        <p>As night falls, the city puts out its lights so nothing outshines the sky. Friends and families gather on rooftops, terraces and balconies to watch together, dressed in their finest.</p>
+        <p>The stars that sweep across the sky are not stars at all, but spirits of light that pass over the city once a year. The celebrations carry on long after the last light has passed.</p>
+      </section>
+
+      <span class="div" aria-hidden="true">✦</span>
+
+      <section class="sec">
+        <h2>Visitor Etiquette</h2>
+        <p style="font-style: italic;">Keep your lights low; the city goes dark on purpose.<br>Watch, don't chase. The lights are spirits, not stars.</p>
+      </section>
+    </div>
+
+    <span class="seal" aria-hidden="true">✦</span>
+
+  </div>
+
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var phone=false, html=document.documentElement;
+  function fit(){
+    var w=window.innerWidth, z=1;
+    if(phone){ z=Math.max(.8,Math.min(1.35,w/390)); }
+    else if(w<1440){ z=Math.max(.5,w/1440); }
+    html.style.zoom=z;
+  }
+  fit(); window.addEventListener('resize',fit);
+  var inFrame=window.parent&&window.parent!==window;
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a.ev-back, a.ev-lore');
+    if(!a||!inFrame) return;
+    e.preventDefault();
+    if(a.classList.contains('ev-back')) window.parent.postMessage('eurielle-close-guide','*');
+    else window.parent.postMessage({type:'eurielle-open-entry',id:a.getAttribute('data-entry')},'*');
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&inFrame) window.parent.postMessage('eurielle-close-guide','*'); });
+})();
+</script>
+</body>
+</html>

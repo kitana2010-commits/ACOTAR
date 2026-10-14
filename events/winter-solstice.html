@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Winter Solstice · Eurielle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&amp;family=Cormorant+SC:wght@500;600&amp;family=Hanken+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#05070f}
+a{color:#d8d2c4}a:hover{color:#ffffff}
+.scene{position:relative;overflow:hidden;
+  background:
+    radial-gradient(ellipse 1100px 520px at 50% 108%, rgba(255,166,86,.15), transparent 70%),
+    radial-gradient(ellipse 700px 420px at 12% 100%, rgba(255,140,70,.07), transparent 70%),
+    radial-gradient(ellipse 700px 420px at 88% 100%, rgba(255,140,70,.07), transparent 70%),
+    radial-gradient(ellipse 1300px 600px at 50% -20%, rgba(50,66,120,.22), transparent 70%),
+    radial-gradient(1px 1px at 20px 30px, rgba(235,240,255,.55), transparent),
+    radial-gradient(1px 1px at 120px 80px, rgba(235,240,255,.35), transparent),
+    radial-gradient(1px 1px at 190px 160px, rgba(235,240,255,.45), transparent),
+    linear-gradient(180deg, #020309 0%, #050816 45%, #090a19 78%, #100c15 100%);
+  background-size:auto,auto,auto,auto,230px 230px,230px 230px,230px 230px,auto;}
+.flake{position:absolute;top:-20px;border-radius:50%;background:#ffffff;pointer-events:none;
+  animation-name:fall;animation-timing-function:linear;animation-iteration-count:infinite}
+@keyframes fall{
+  0%{transform:translate(0,0)}
+  25%{transform:translate(18px,420px)}
+  50%{transform:translate(-10px,840px)}
+  75%{transform:translate(16px,1260px)}
+  100%{transform:translate(0,1700px)}}
+.drifts{position:absolute;left:0;right:0;bottom:0;pointer-events:none}
+/* polaroids */
+.pol{position:absolute;margin:0;box-sizing:border-box;padding:14px 14px 0;background:#e4dccb;
+  box-shadow:0 20px 42px rgba(0,0,0,.65),0 2px 6px rgba(0,0,0,.45);transition:transform .35s ease}
+.pol:hover{transform:rotate(0deg) translateY(-6px) scale(1.03)!important;z-index:9!important}
+.ph{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#8a8fa3;background:#151a2c}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ph::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 28px rgba(0,0,0,.45)}
+.cap{height:50px}
+.tape{position:absolute;width:96px;height:26px;background:rgba(236,242,250,.55);box-shadow:0 1px 3px rgba(0,0,0,.25);z-index:2;
+  backdrop-filter:blur(1px)}
+.berry{position:absolute;width:15px;height:15px;border-radius:50%;z-index:3;
+  background:radial-gradient(circle at 35% 30%, #ff8b85, #b3222a 55%, #5c0a10);box-shadow:0 3px 5px rgba(0,0,0,.55)}
+/* the card */
+.card{position:absolute;box-sizing:border-box;padding:76px 70px 94px;color:#2e2219;
+  background:
+    radial-gradient(1px 1px at 9px 13px, rgba(120,90,50,.10), transparent),
+    radial-gradient(1px 1px at 21px 5px, rgba(255,255,255,.35), transparent),
+    radial-gradient(ellipse 120% 70% at 50% 30%, #e6d9bf 0%, #dccbaa 58%, #cbb58e 100%);
+  background-size:25px 19px,31px 23px,auto;
+  border-radius:3px;
+  box-shadow:0 36px 70px rgba(0,0,0,.8),0 6px 14px rgba(0,0,0,.5), inset 0 0 50px rgba(120,84,40,.28)}
+.goldframe{position:absolute;inset:18px;pointer-events:none;border:1.5px solid transparent;
+  border-image:linear-gradient(135deg,#f3dc9a,#a87a2c 25%,#f8e7b0 45%,#9c6f24 65%,#e9cf86 85%,#b3863a) 1}
+.goldframe2{position:absolute;inset:26px;pointer-events:none;border:1px solid rgba(168,122,44,.4)}
+.cn{position:absolute;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:13px;line-height:1;color:#9a6d22;background:#ded0b3;border-radius:50%;z-index:2}
+.gold{background:linear-gradient(100deg,#7a5216 0%,#b98a35 25%,#84591a 45%,#c99c45 60%,#6f4a12 80%,#a77a2a 100%);
+  background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+  animation:shine 9s linear infinite}
+@keyframes shine{0%{background-position:0% 0}100%{background-position:220% 0}}
+.sec{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.sec h2{margin:0;font-family:'Cormorant SC',serif;font-weight:600;font-size:17px;letter-spacing:6px;color:#7d1d24}
+.sec p{margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:20px;line-height:1.6;color:#2e2219}
+.div{font-size:10px;letter-spacing:14px;color:#a87a2c;text-align:center;line-height:1}
+.inset{position:relative;margin-top:6px;padding:20px 24px 18px;border:1px solid rgba(125,29,36,.4);background:rgba(125,29,36,.05)}
+.inset::before{content:"";position:absolute;inset:4px;border:1px solid rgba(125,29,36,.18);pointer-events:none}
+.inset h3{margin:0 0 8px;font-family:'Cormorant SC',serif;font-weight:600;font-size:15px;letter-spacing:4px;color:#7d1d24}
+.inset p{margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:19.5px;line-height:1.55;color:#2e2219}
+.seal{position:absolute;left:50%;top:-30px;width:68px;height:68px;margin-left:-34px;border-radius:50%;z-index:3;
+  display:flex;align-items:center;justify-content:center;color:#f3c9c4;
+  background:radial-gradient(circle at 35% 30%, #d1434a, #9b1c25 48%, #64090f 85%);
+  box-shadow:0 8px 16px rgba(0,0,0,.55), inset 0 0 0 5px rgba(120,10,18,.55), inset 0 -5px 9px rgba(0,0,0,.3)}
+.glint{position:absolute;border-radius:50%;background:#fff;pointer-events:none;box-shadow:0 0 4px 1px rgba(255,255,255,.95),0 0 10px 2px rgba(200,215,255,.5);
+  opacity:0;animation:glint ease-in-out infinite}
+@keyframes glint{0%,100%{opacity:0;transform:scale(.4)}50%{opacity:1;transform:scale(1)}}
+@media (prefers-reduced-motion: reduce){.flake,.gold,.glint{animation:none}}
+</style>
+<style>html,body{margin:0}body{background:inherit}</style>
+</head>
+<body>
+
+<div class="scene" style="width: 100%; height: 1980px;">
+
+  <svg class="drifts" width="100%" height="320" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="sdBack" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#4c5674"></stop>
+        <stop offset="100%" stop-color="#1c2134"></stop>
+      </linearGradient>
+      <linearGradient id="sdMid" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#b9c2d8"></stop>
+        <stop offset="45%" stop-color="#7f8aa8"></stop>
+        <stop offset="100%" stop-color="#3a425c"></stop>
+      </linearGradient>
+      <linearGradient id="sdFront" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#f3f5fb"></stop>
+        <stop offset="30%" stop-color="#d6dcea"></stop>
+        <stop offset="100%" stop-color="#8e99b6"></stop>
+      </linearGradient>
+      <radialGradient id="sdWarm" cx="50%" cy="100%" r="60%">
+        <stop offset="0%" stop-color="rgba(255,176,104,.30)"></stop>
+        <stop offset="100%" stop-color="rgba(255,176,104,0)"></stop>
+      </radialGradient>
+      <linearGradient id="sdMist" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="rgba(200,210,235,0)"></stop>
+        <stop offset="100%" stop-color="rgba(200,210,235,.16)"></stop>
+      </linearGradient>
+      <filter id="sdSoft" x="-5%" y="-20%" width="110%" height="140%"><feGaussianBlur stdDeviation="5"></feGaussianBlur></filter>
+      <filter id="sdEdge" x="-5%" y="-50%" width="110%" height="200%"><feGaussianBlur stdDeviation="1.2"></feGaussianBlur></filter>
+      <filter id="sdGrain" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="7" result="n"></feTurbulence>
+        <feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 -0.55" result="g"></feColorMatrix>
+        <feComposite in="g" in2="SourceGraphic" operator="in"></feComposite>
+      </filter>
+    </defs>
+    <rect x="0" y="60" width="1440" height="120" fill="url(#sdMist)" filter="url(#sdSoft)"></rect>
+    <path d="M0 150 C 120 120, 260 112, 380 130 S 620 160, 760 132 S 1020 96, 1180 122 S 1380 140, 1440 128 L1440 320 L0 320 Z" fill="url(#sdBack)" opacity=".85" filter="url(#sdSoft)"></path>
+    <path d="M0 200 C 140 170, 300 168, 440 186 S 700 214, 860 190 S 1120 158, 1280 178 S 1410 192, 1440 186 L1440 320 L0 320 Z" fill="url(#sdMid)"></path>
+    <path d="M0 200 C 140 170, 300 168, 440 186 S 700 214, 860 190 S 1120 158, 1280 178 S 1410 192, 1440 186" fill="none" stroke="rgba(235,240,252,.55)" stroke-width="2" filter="url(#sdEdge)"></path>
+    <path d="M-40 238 C 150 222, 320 214, 500 230 S 820 254, 1000 238 S 1300 216, 1480 234" fill="none" stroke="rgba(40,48,80,.32)" stroke-width="14" filter="url(#sdSoft)"></path>
+    <path d="M0 252 C 160 228, 330 222, 500 238 S 820 266, 1000 246 S 1300 222, 1440 240 L1440 320 L0 320 Z" fill="url(#sdFront)"></path>
+    <path d="M0 252 C 160 228, 330 222, 500 238 S 820 266, 1000 246 S 1300 222, 1440 240 L1440 320 L0 320 Z" fill="#ffffff" filter="url(#sdGrain)" opacity=".35"></path>
+    <path d="M0 252 C 160 228, 330 222, 500 238 S 820 266, 1000 246 S 1300 222, 1440 240" fill="none" stroke="#ffffff" stroke-width="2.5" opacity=".9" filter="url(#sdEdge)"></path>
+    <rect x="0" y="120" width="1440" height="200" fill="url(#sdWarm)"></rect>
+  </svg>
+
+  
+    <span class="glint" style="left: 75.57%; bottom: 13px; width: 2.4px; height: 2.4px; animation-duration: 4.1s; animation-delay: -4.3s;"></span>
+  
+    <span class="glint" style="left: 97.93%; bottom: 52px; width: 2.3px; height: 2.3px; animation-duration: 3s; animation-delay: -3s;"></span>
+  
+    <span class="glint" style="left: 20.49%; bottom: 48px; width: 2.9px; height: 2.9px; animation-duration: 4.8s; animation-delay: -3.2s;"></span>
+  
+    <span class="glint" style="left: 6.2%; bottom: 15px; width: 2.6px; height: 2.6px; animation-duration: 4s; animation-delay: -3.1s;"></span>
+  
+    <span class="glint" style="left: 18.59%; bottom: 73px; width: 1.7px; height: 1.7px; animation-duration: 2.6s; animation-delay: -4.9s;"></span>
+  
+    <span class="glint" style="left: 43.72%; bottom: 73px; width: 1.9px; height: 1.9px; animation-duration: 3s; animation-delay: -1.8s;"></span>
+  
+    <span class="glint" style="left: 83.59%; bottom: 13px; width: 2.8px; height: 2.8px; animation-duration: 3.3s; animation-delay: -0.7s;"></span>
+  
+    <span class="glint" style="left: 64.31%; bottom: 73px; width: 2.5px; height: 2.5px; animation-duration: 3.9s; animation-delay: -2.6s;"></span>
+  
+    <span class="glint" style="left: 55.44%; bottom: 77px; width: 2.9px; height: 2.9px; animation-duration: 3.9s; animation-delay: -3s;"></span>
+  
+    <span class="glint" style="left: 26.29%; bottom: 63px; width: 1.6px; height: 1.6px; animation-duration: 4.1s; animation-delay: -1.1s;"></span>
+  
+    <span class="glint" style="left: 7.95%; bottom: 25px; width: 1.7px; height: 1.7px; animation-duration: 2.1s; animation-delay: -4.9s;"></span>
+  
+    <span class="glint" style="left: 19.62%; bottom: 17px; width: 1.6px; height: 1.6px; animation-duration: 3.5s; animation-delay: -3.6s;"></span>
+  
+    <span class="glint" style="left: 57.56%; bottom: 31px; width: 1.6px; height: 1.6px; animation-duration: 4s; animation-delay: -3.3s;"></span>
+  
+    <span class="glint" style="left: 98.55%; bottom: 34px; width: 1.9px; height: 1.9px; animation-duration: 3.2s; animation-delay: -4.6s;"></span>
+  
+    <span class="glint" style="left: 97.58%; bottom: 72px; width: 2.3px; height: 2.3px; animation-duration: 2.6s; animation-delay: -3.2s;"></span>
+  
+    <span class="glint" style="left: 10.4%; bottom: 19px; width: 2.3px; height: 2.3px; animation-duration: 3s; animation-delay: -0.4s;"></span>
+  
+    <span class="glint" style="left: 23.72%; bottom: 22px; width: 2.1px; height: 2.1px; animation-duration: 2.4s; animation-delay: -2.8s;"></span>
+  
+    <span class="glint" style="left: 31.08%; bottom: 30px; width: 2.1px; height: 2.1px; animation-duration: 4.7s; animation-delay: -4.9s;"></span>
+  
+    <span class="glint" style="left: 99.74%; bottom: 62px; width: 2.9px; height: 2.9px; animation-duration: 4.6s; animation-delay: -0.9s;"></span>
+  
+    <span class="glint" style="left: 60.14%; bottom: 82px; width: 1.7px; height: 1.7px; animation-duration: 2.2s; animation-delay: -1.9s;"></span>
+  
+    <span class="glint" style="left: 40.74%; bottom: 21px; width: 2.7px; height: 2.7px; animation-duration: 4.7s; animation-delay: -5s;"></span>
+  
+    <span class="glint" style="left: 74.07%; bottom: 26px; width: 2.6px; height: 2.6px; animation-duration: 2.4s; animation-delay: -0.9s;"></span>
+  
+    <span class="glint" style="left: 38.04%; bottom: 59px; width: 3px; height: 3px; animation-duration: 3.4s; animation-delay: -2.8s;"></span>
+  
+    <span class="glint" style="left: 87.32%; bottom: 81px; width: 2.7px; height: 2.7px; animation-duration: 3.4s; animation-delay: -1.4s;"></span>
+  
+    <span class="glint" style="left: 9.56%; bottom: 75px; width: 2.8px; height: 2.8px; animation-duration: 4.8s; animation-delay: -3.6s;"></span>
+  
+    <span class="glint" style="left: 56.96%; bottom: 23px; width: 2.4px; height: 2.4px; animation-duration: 3s; animation-delay: -2.3s;"></span>
+  
+    <span class="glint" style="left: 75.67%; bottom: 16px; width: 2.1px; height: 2.1px; animation-duration: 2.7s; animation-delay: -1.8s;"></span>
+  
+    <span class="glint" style="left: 54.14%; bottom: 79px; width: 2.3px; height: 2.3px; animation-duration: 3.4s; animation-delay: -0.3s;"></span>
+  
+    <span class="glint" style="left: 55.37%; bottom: 75px; width: 2.2px; height: 2.2px; animation-duration: 4.3s; animation-delay: -2.9s;"></span>
+  
+    <span class="glint" style="left: 96.43%; bottom: 26px; width: 2.6px; height: 2.6px; animation-duration: 4.4s; animation-delay: -0.1s;"></span>
+  
+    <span class="glint" style="left: 91.86%; bottom: 46px; width: 1.8px; height: 1.8px; animation-duration: 4.5s; animation-delay: -4.8s;"></span>
+  
+    <span class="glint" style="left: 28.9%; bottom: 81px; width: 2.4px; height: 2.4px; animation-duration: 4.4s; animation-delay: -4.6s;"></span>
+  
+    <span class="glint" style="left: 75.94%; bottom: 77px; width: 2.1px; height: 2.1px; animation-duration: 3.2s; animation-delay: -0.7s;"></span>
+  
+    <span class="glint" style="left: 93.5%; bottom: 73px; width: 1.8px; height: 1.8px; animation-duration: 4.4s; animation-delay: -1.4s;"></span>
+  
+
+  
+    
+      <span class="flake" style="left: 2.71%; width: 1.7px; height: 1.7px; opacity: 0.51; animation-duration: 25.9s; animation-delay: -1.7s;"></span>
+    
+      <span class="flake" style="left: 7.39%; width: 4.2px; height: 4.2px; opacity: 0.6; animation-duration: 24.5s; animation-delay: -4.7s;"></span>
+    
+      <span class="flake" style="left: 36.42%; width: 3.1px; height: 3.1px; opacity: 0.53; animation-duration: 25s; animation-delay: -3.3s;"></span>
+    
+      <span class="flake" style="left: 33.52%; width: 2.5px; height: 2.5px; opacity: 0.89; animation-duration: 23.1s; animation-delay: -24.3s;"></span>
+    
+      <span class="flake" style="left: 94.08%; width: 1.9px; height: 1.9px; opacity: 0.72; animation-duration: 24.9s; animation-delay: -6s;"></span>
+    
+      <span class="flake" style="left: 53.79%; width: 4.9px; height: 4.9px; opacity: 0.89; animation-duration: 19.8s; animation-delay: -5.6s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 56.88%; width: 4.3px; height: 4.3px; opacity: 0.76; animation-duration: 25.2s; animation-delay: -20.4s;"></span>
+    
+      <span class="flake" style="left: 56.65%; width: 2.8px; height: 2.8px; opacity: 0.42; animation-duration: 25s; animation-delay: -27.9s;"></span>
+    
+      <span class="flake" style="left: 57.48%; width: 2.9px; height: 2.9px; opacity: 0.86; animation-duration: 22.3s; animation-delay: -20.2s;"></span>
+    
+      <span class="flake" style="left: 56.83%; width: 2.9px; height: 2.9px; opacity: 0.39; animation-duration: 25.3s; animation-delay: -29.3s;"></span>
+    
+      <span class="flake" style="left: 37.78%; width: 1.5px; height: 1.5px; opacity: 0.52; animation-duration: 28.5s; animation-delay: -26.2s;"></span>
+    
+      <span class="flake" style="left: 91.6%; width: 3.3px; height: 3.3px; opacity: 0.79; animation-duration: 25.9s; animation-delay: -15.8s;"></span>
+    
+      <span class="flake" style="left: 81.22%; width: 3.4px; height: 3.4px; opacity: 0.73; animation-duration: 25.1s; animation-delay: -27.6s;"></span>
+    
+      <span class="flake" style="left: 19.75%; width: 2.3px; height: 2.3px; opacity: 0.43; animation-duration: 23.5s; animation-delay: -15.8s;"></span>
+    
+      <span class="flake" style="left: 74.79%; width: 5.1px; height: 5.1px; opacity: 0.39; animation-duration: 20.3s; animation-delay: -9.6s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 66.55%; width: 2.1px; height: 2.1px; opacity: 0.47; animation-duration: 25.9s; animation-delay: -20.5s;"></span>
+    
+      <span class="flake" style="left: 95.73%; width: 2.4px; height: 2.4px; opacity: 0.64; animation-duration: 24.7s; animation-delay: -16.2s;"></span>
+    
+      <span class="flake" style="left: 45.59%; width: 1.8px; height: 1.8px; opacity: 0.61; animation-duration: 27.2s; animation-delay: -14s;"></span>
+    
+      <span class="flake" style="left: 92.57%; width: 6.4px; height: 6.4px; opacity: 0.45; animation-duration: 17.2s; animation-delay: -1.2s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 50.11%; width: 4px; height: 4px; opacity: 0.37; animation-duration: 25.3s; animation-delay: -27s;"></span>
+    
+      <span class="flake" style="left: 52.46%; width: 5.2px; height: 5.2px; opacity: 0.43; animation-duration: 22.4s; animation-delay: -28.2s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 49.78%; width: 5.1px; height: 5.1px; opacity: 0.72; animation-duration: 20.3s; animation-delay: -18.5s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 10.17%; width: 1.5px; height: 1.5px; opacity: 0.82; animation-duration: 30.7s; animation-delay: -23.3s;"></span>
+    
+      <span class="flake" style="left: 8.44%; width: 3.5px; height: 3.5px; opacity: 0.47; animation-duration: 23.6s; animation-delay: -18.7s;"></span>
+    
+      <span class="flake" style="left: 41.1%; width: 5.9px; height: 5.9px; opacity: 0.46; animation-duration: 21s; animation-delay: -23.2s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 87.78%; width: 1.8px; height: 1.8px; opacity: 0.41; animation-duration: 27.2s; animation-delay: -24.6s;"></span>
+    
+      <span class="flake" style="left: 57.51%; width: 4.4px; height: 4.4px; opacity: 0.95; animation-duration: 25s; animation-delay: -9.5s;"></span>
+    
+      <span class="flake" style="left: 14.84%; width: 1.6px; height: 1.6px; opacity: 0.39; animation-duration: 27.2s; animation-delay: -5.2s;"></span>
+    
+      <span class="flake" style="left: 54.5%; width: 5.7px; height: 5.7px; opacity: 0.83; animation-duration: 20s; animation-delay: -28.3s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 76.85%; width: 1.7px; height: 1.7px; opacity: 0.58; animation-duration: 28s; animation-delay: -29.7s;"></span>
+    
+      <span class="flake" style="left: 1.48%; width: 2.1px; height: 2.1px; opacity: 0.8; animation-duration: 25.3s; animation-delay: -19.6s;"></span>
+    
+      <span class="flake" style="left: 63.01%; width: 3.1px; height: 3.1px; opacity: 0.85; animation-duration: 24.2s; animation-delay: -28s;"></span>
+    
+      <span class="flake" style="left: 3.69%; width: 2.2px; height: 2.2px; opacity: 0.65; animation-duration: 29.5s; animation-delay: -17.6s;"></span>
+    
+      <span class="flake" style="left: 39.36%; width: 2.3px; height: 2.3px; opacity: 0.44; animation-duration: 23.4s; animation-delay: -20.2s;"></span>
+    
+      <span class="flake" style="left: 19.35%; width: 3.1px; height: 3.1px; opacity: 0.58; animation-duration: 26.8s; animation-delay: -19.2s;"></span>
+    
+      <span class="flake" style="left: 72.78%; width: 1.6px; height: 1.6px; opacity: 0.77; animation-duration: 28.7s; animation-delay: -6.9s;"></span>
+    
+      <span class="flake" style="left: 72.2%; width: 3.5px; height: 3.5px; opacity: 0.91; animation-duration: 25.3s; animation-delay: -23.3s;"></span>
+    
+      <span class="flake" style="left: 81.16%; width: 6.1px; height: 6.1px; opacity: 0.43; animation-duration: 17.3s; animation-delay: -26.1s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 46.25%; width: 1.8px; height: 1.8px; opacity: 0.75; animation-duration: 27.8s; animation-delay: -28.3s;"></span>
+    
+      <span class="flake" style="left: 43.69%; width: 1.8px; height: 1.8px; opacity: 0.57; animation-duration: 25.6s; animation-delay: -8s;"></span>
+    
+      <span class="flake" style="left: 42.76%; width: 4.6px; height: 4.6px; opacity: 0.57; animation-duration: 23.7s; animation-delay: -1.6s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 41.92%; width: 5.1px; height: 5.1px; opacity: 0.75; animation-duration: 20.4s; animation-delay: -25.8s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 9.83%; width: 3.5px; height: 3.5px; opacity: 0.4; animation-duration: 24.4s; animation-delay: -13.8s;"></span>
+    
+      <span class="flake" style="left: 50.04%; width: 1.5px; height: 1.5px; opacity: 0.38; animation-duration: 26.8s; animation-delay: -2.8s;"></span>
+    
+      <span class="flake" style="left: 48.81%; width: 2.7px; height: 2.7px; opacity: 0.49; animation-duration: 23.4s; animation-delay: -6.7s;"></span>
+    
+      <span class="flake" style="left: 94.65%; width: 4.8px; height: 4.8px; opacity: 0.6; animation-duration: 23.7s; animation-delay: -26.5s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 23.92%; width: 4.2px; height: 4.2px; opacity: 0.53; animation-duration: 23.6s; animation-delay: -22.6s;"></span>
+    
+      <span class="flake" style="left: 97.67%; width: 1.5px; height: 1.5px; opacity: 0.57; animation-duration: 29.1s; animation-delay: -2.1s;"></span>
+    
+      <span class="flake" style="left: 64.97%; width: 2.4px; height: 2.4px; opacity: 0.59; animation-duration: 24.8s; animation-delay: -13.2s;"></span>
+    
+      <span class="flake" style="left: 75.24%; width: 6.4px; height: 6.4px; opacity: 0.72; animation-duration: 16.6s; animation-delay: -25.6s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 63.54%; width: 5.6px; height: 5.6px; opacity: 0.54; animation-duration: 17.7s; animation-delay: -24.9s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 39.68%; width: 2.7px; height: 2.7px; opacity: 0.66; animation-duration: 27.2s; animation-delay: -10.7s;"></span>
+    
+      <span class="flake" style="left: 43.19%; width: 2.1px; height: 2.1px; opacity: 0.71; animation-duration: 24s; animation-delay: -22.4s;"></span>
+    
+      <span class="flake" style="left: 12.86%; width: 2.7px; height: 2.7px; opacity: 0.7; animation-duration: 24.4s; animation-delay: -12.5s;"></span>
+    
+      <span class="flake" style="left: 37.93%; width: 1.5px; height: 1.5px; opacity: 0.87; animation-duration: 26.6s; animation-delay: -11.9s;"></span>
+    
+      <span class="flake" style="left: 64.85%; width: 5.6px; height: 5.6px; opacity: 0.78; animation-duration: 20.2s; animation-delay: -13.7s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 90.48%; width: 1.9px; height: 1.9px; opacity: 0.42; animation-duration: 24.2s; animation-delay: -9s;"></span>
+    
+      <span class="flake" style="left: 63.66%; width: 2.1px; height: 2.1px; opacity: 0.72; animation-duration: 28s; animation-delay: -18.7s;"></span>
+    
+      <span class="flake" style="left: 20.81%; width: 3.4px; height: 3.4px; opacity: 0.67; animation-duration: 26.2s; animation-delay: -20.2s;"></span>
+    
+      <span class="flake" style="left: 90.14%; width: 3.3px; height: 3.3px; opacity: 0.95; animation-duration: 27.1s; animation-delay: -1.1s;"></span>
+    
+      <span class="flake" style="left: 89.63%; width: 2.8px; height: 2.8px; opacity: 0.57; animation-duration: 24.9s; animation-delay: -7.4s;"></span>
+    
+      <span class="flake" style="left: 88.08%; width: 1.9px; height: 1.9px; opacity: 0.38; animation-duration: 29.4s; animation-delay: -6s;"></span>
+    
+      <span class="flake" style="left: 48.72%; width: 5.9px; height: 5.9px; opacity: 0.89; animation-duration: 16.3s; animation-delay: -0.1s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 28.1%; width: 6.1px; height: 6.1px; opacity: 0.92; animation-duration: 19.3s; animation-delay: -5.6s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 80.21%; width: 1.6px; height: 1.6px; opacity: 0.86; animation-duration: 30s; animation-delay: -20.8s;"></span>
+    
+      <span class="flake" style="left: 68.24%; width: 3.9px; height: 3.9px; opacity: 0.83; animation-duration: 23.3s; animation-delay: -26.3s;"></span>
+    
+      <span class="flake" style="left: 51.38%; width: 1.5px; height: 1.5px; opacity: 0.55; animation-duration: 26.5s; animation-delay: -20.7s;"></span>
+    
+      <span class="flake" style="left: 27.62%; width: 6.4px; height: 6.4px; opacity: 0.85; animation-duration: 20.5s; animation-delay: -29.6s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 72.01%; width: 2.9px; height: 2.9px; opacity: 0.81; animation-duration: 23.4s; animation-delay: -28.5s;"></span>
+    
+      <span class="flake" style="left: 79.04%; width: 2.3px; height: 2.3px; opacity: 0.84; animation-duration: 28.5s; animation-delay: -14.3s;"></span>
+    
+      <span class="flake" style="left: 61.39%; width: 3.3px; height: 3.3px; opacity: 0.37; animation-duration: 25.2s; animation-delay: -18.8s;"></span>
+    
+      <span class="flake" style="left: 67.06%; width: 2.5px; height: 2.5px; opacity: 0.54; animation-duration: 23.8s; animation-delay: -26.7s;"></span>
+    
+      <span class="flake" style="left: 79.47%; width: 2.6px; height: 2.6px; opacity: 0.66; animation-duration: 26.3s; animation-delay: -0.2s;"></span>
+    
+      <span class="flake" style="left: 90.99%; width: 1.5px; height: 1.5px; opacity: 0.84; animation-duration: 29.5s; animation-delay: -4.9s;"></span>
+    
+      <span class="flake" style="left: 30.12%; width: 4.2px; height: 4.2px; opacity: 0.9; animation-duration: 24.1s; animation-delay: -11.5s;"></span>
+    
+      <span class="flake" style="left: 92.26%; width: 2.1px; height: 2.1px; opacity: 0.59; animation-duration: 25.4s; animation-delay: -15.7s;"></span>
+    
+      <span class="flake" style="left: 66.45%; width: 1.8px; height: 1.8px; opacity: 0.67; animation-duration: 25.8s; animation-delay: -6.7s;"></span>
+    
+      <span class="flake" style="left: 18.32%; width: 4.9px; height: 4.9px; opacity: 0.83; animation-duration: 19.5s; animation-delay: -27.8s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 59.46%; width: 6.3px; height: 6.3px; opacity: 0.59; animation-duration: 18.6s; animation-delay: -24.3s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 87.78%; width: 1.9px; height: 1.9px; opacity: 0.64; animation-duration: 25.3s; animation-delay: -29.2s;"></span>
+    
+      <span class="flake" style="left: 24.36%; width: 1.5px; height: 1.5px; opacity: 0.36; animation-duration: 30.1s; animation-delay: -25.1s;"></span>
+    
+      <span class="flake" style="left: 86.84%; width: 2.9px; height: 2.9px; opacity: 0.62; animation-duration: 22.3s; animation-delay: -6.7s;"></span>
+    
+      <span class="flake" style="left: 18.34%; width: 2.2px; height: 2.2px; opacity: 0.81; animation-duration: 25s; animation-delay: -7.1s;"></span>
+    
+      <span class="flake" style="left: 2.83%; width: 3.8px; height: 3.8px; opacity: 0.71; animation-duration: 23.4s; animation-delay: -18.5s;"></span>
+    
+      <span class="flake" style="left: 97.79%; width: 4.4px; height: 4.4px; opacity: 0.54; animation-duration: 19.9s; animation-delay: -7.2s;"></span>
+    
+      <span class="flake" style="left: 79.75%; width: 3.4px; height: 3.4px; opacity: 0.7; animation-duration: 26s; animation-delay: -28.4s;"></span>
+    
+      <span class="flake" style="left: 50.63%; width: 3.4px; height: 3.4px; opacity: 0.9; animation-duration: 26.3s; animation-delay: -1.9s;"></span>
+    
+      <span class="flake" style="left: 65.57%; width: 1.6px; height: 1.6px; opacity: 0.64; animation-duration: 26.6s; animation-delay: -14.6s;"></span>
+    
+      <span class="flake" style="left: 96.76%; width: 2.6px; height: 2.6px; opacity: 0.62; animation-duration: 27.7s; animation-delay: -26s;"></span>
+    
+      <span class="flake" style="left: 32.38%; width: 3.2px; height: 3.2px; opacity: 0.39; animation-duration: 23.9s; animation-delay: -4.6s;"></span>
+    
+      <span class="flake" style="left: 76.68%; width: 1.7px; height: 1.7px; opacity: 0.89; animation-duration: 30.1s; animation-delay: -12s;"></span>
+    
+      <span class="flake" style="left: 77.88%; width: 1.9px; height: 1.9px; opacity: 0.6; animation-duration: 27.3s; animation-delay: -14.3s;"></span>
+    
+      <span class="flake" style="left: 13.95%; width: 5.9px; height: 5.9px; opacity: 0.7; animation-duration: 18.3s; animation-delay: -22.4s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 65.82%; width: 3.4px; height: 3.4px; opacity: 0.78; animation-duration: 21.7s; animation-delay: -6.3s;"></span>
+    
+      <span class="flake" style="left: 44.08%; width: 3.7px; height: 3.7px; opacity: 0.38; animation-duration: 21.8s; animation-delay: -3.6s;"></span>
+    
+      <span class="flake" style="left: 62.27%; width: 5px; height: 5px; opacity: 0.9; animation-duration: 18.2s; animation-delay: -13.9s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 2.3%; width: 2.1px; height: 2.1px; opacity: 0.95; animation-duration: 28s; animation-delay: -14.8s;"></span>
+    
+      <span class="flake" style="left: 46.23%; width: 5px; height: 5px; opacity: 0.71; animation-duration: 20.9s; animation-delay: -5.7s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 93.42%; width: 2.6px; height: 2.6px; opacity: 0.42; animation-duration: 23.5s; animation-delay: -20.5s;"></span>
+    
+      <span class="flake" style="left: 94.34%; width: 1.9px; height: 1.9px; opacity: 0.64; animation-duration: 27.8s; animation-delay: -26.4s;"></span>
+    
+      <span class="flake" style="left: 2.48%; width: 3.2px; height: 3.2px; opacity: 0.37; animation-duration: 26.4s; animation-delay: -18.9s;"></span>
+    
+      <span class="flake" style="left: 32.57%; width: 1.5px; height: 1.5px; opacity: 0.55; animation-duration: 28.7s; animation-delay: -14.7s;"></span>
+    
+      <span class="flake" style="left: 35.4%; width: 2.1px; height: 2.1px; opacity: 0.45; animation-duration: 24.6s; animation-delay: -16.4s;"></span>
+    
+      <span class="flake" style="left: 88.91%; width: 5.4px; height: 5.4px; opacity: 0.9; animation-duration: 21.6s; animation-delay: -27.5s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 99.73%; width: 1.7px; height: 1.7px; opacity: 0.55; animation-duration: 29.7s; animation-delay: -5.9s;"></span>
+    
+      <span class="flake" style="left: 91.51%; width: 5.6px; height: 5.6px; opacity: 0.81; animation-duration: 18.1s; animation-delay: -13.5s; filter: blur(1px);"></span>
+    
+      <span class="flake" style="left: 55.48%; width: 3.6px; height: 3.6px; opacity: 0.64; animation-duration: 21.2s; animation-delay: -8.3s;"></span>
+    
+      <span class="flake" style="left: 94.67%; width: 4.4px; height: 4.4px; opacity: 0.69; animation-duration: 22.5s; animation-delay: -21.1s;"></span>
+    
+      <span class="flake" style="left: 33.69%; width: 1.5px; height: 1.5px; opacity: 0.56; animation-duration: 28.2s; animation-delay: -6.1s;"></span>
+    
+      <span class="flake" style="left: 89.14%; width: 3.8px; height: 3.8px; opacity: 0.5; animation-duration: 24.6s; animation-delay: -2.7s;"></span>
+    
+  
+
+  <div style="position: absolute; left: 0px; right: 0px; top: 0px; height: 64px; box-sizing: border-box; padding: 0px 48px; display: flex; align-items: center; justify-content: space-between; z-index: 10; border-bottom: 1px solid rgba(230, 220, 200, 0.08);">
+    <a href="index.html" class="ev-back" style="font-family: &quot;Hanken Grotesk&quot;, sans-serif; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; text-decoration: none;">← Festivals &amp; Rites</a>
+    <span style="font-family: &quot;Cormorant Garamond&quot;, serif; font-size: 24px; letter-spacing: 2px; color: rgb(239, 230, 245);">Eurielle</span>
+    <a href="index.html" class="ev-lore" data-entry="winter-solstice" style="display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 0px 14px; border: 1px solid rgba(230, 225, 240, 0.28); border-radius: 2px; background: rgba(5, 5, 12, 0.45); font-family: &quot;Hanken Grotesk&quot;, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none;"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5C6.5 4 9.5 4 12 6c2.5-2 5.5-2 8-.5V19c-2.5-1.5-5.5-1.5-8 .5-2.5-2-5.5-2-8-.5z"></path><path d="M12 6v13.5"></path></svg>Lorebook entry</a>
+  </div>
+
+  <div style="position: absolute; left: 50%; top: 0px; width: 1440px; height: 1980px; margin-left: -720px;">
+
+  
+  <figure class="pol" style="left: 70px; top: 140px; width: 370px; transform: rotate(-6deg); z-index: 1;">
+    <span class="tape" style="left: 137px; top: -12px; transform: rotate(-3deg);"></span>
+    <div class="ph" style="height: 270px;">
+      <img src="../assets/ws-street.webp" alt="A Velaris street strung with lights, garlands and Solstice banners" style="object-position: 50% 50%;">
+    </div>
+    <div class="cap"></div>
+  </figure>
+
+  
+  <figure class="pol" style="left: 36px; top: 590px; width: 330px; transform: rotate(4deg); z-index: 2;">
+    <span class="berry" style="left: 158px; top: 5px;"></span>
+    <div class="ph" style="height: 400px;">
+      <img src="../assets/ws-throw.webp" alt="A winged Illyrian hurling a snowball straight at the camera" style="object-position: 45% 50%;">
+    </div>
+    <div class="cap"></div>
+  </figure>
+
+  
+  <figure class="pol" style="left: 28px; top: 1176px; width: 360px; transform: rotate(-5deg); z-index: 3;">
+    <span class="tape" style="left: 132px; top: -12px; transform: rotate(4deg);"></span>
+    <div class="ph" style="height: 260px;">
+      <img src="../assets/ws-hit.webp" alt="A snowball bursting in the middle of a snowball fight outside a mountain cabin" style="object-position: 50% 50%;">
+    </div>
+    <div class="cap"></div>
+  </figure>
+
+  
+  <figure class="pol" style="left: 1010px; top: 120px; width: 370px; transform: rotate(7deg); z-index: 1;">
+    <span class="tape" style="left: 10px; top: -8px; transform: rotate(-28deg);"></span>
+    <span class="tape" style="right: 4px; top: -6px; transform: rotate(24deg);"></span>
+    <div class="ph" style="height: 266px;">
+      <img src="../assets/ws-fireside.webp" alt="Friends in sweaters laughing together by a cabin fireplace" style="object-position: 50% 45%;">
+    </div>
+    <div class="cap"></div>
+  </figure>
+
+  
+  <figure class="pol" style="left: 1060px; top: 572px; width: 320px; transform: rotate(-5deg); z-index: 2;">
+    <span class="berry" style="left: 153px; top: 5px;"></span>
+    <div class="ph" style="height: 390px;">
+      <img src="../assets/ws-bow.webp" alt="A gift bow stuck on a grumpy Illyrian’s head while presents are opened" style="object-position: 50% 38%;">
+    </div>
+    <div class="cap"></div>
+  </figure>
+
+  
+  <figure class="pol" style="left: 1050px; top: 1164px; width: 360px; transform: rotate(4deg); z-index: 3;">
+    <span class="tape" style="left: 132px; top: -12px; transform: rotate(-4deg);"></span>
+    <div class="ph" style="height: 256px;">
+      <img src="../assets/ws-cocoa.webp" alt="Friends bundled in blankets with mugs of hot cocoa" style="object-position: 50% 40%;">
+    </div>
+    <div class="cap"></div>
+  </figure>
+
+  
+  <div class="card" style="left: 452px; top: 140px; width: 536px; transform: rotate(1deg); z-index: 5;">
+    <span class="goldframe"></span>
+    <span class="goldframe2"></span>
+    <span class="cn" aria-hidden="true" style="left: 9px; top: 9px;">✦</span>
+    <span class="cn" aria-hidden="true" style="right: 9px; top: 9px;">✦</span>
+    <span class="cn" aria-hidden="true" style="left: 9px; bottom: 9px;">✦</span>
+    <span class="cn" aria-hidden="true" style="right: 9px; bottom: 9px;">✦</span>
+    <span class="seal" aria-hidden="true">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7"></path><path d="M9.5 3.5L12 6l2.5-2.5M9.5 20.5L12 18l2.5 2.5M3.8 10.3l3.4-.9-.9-3.4M20.2 13.7l-3.4.9.9 3.4M6.3 17.9l.9-3.4-3.4-.9M17.7 6.1l-.9 3.4 3.4.9"></path></svg>
+    </span>
+
+    <div style="position: relative; display: flex; flex-direction: column; gap: 24px;">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center;">
+        <span style="font-family: &quot;Cormorant SC&quot;, serif; font-weight: 600; font-size: 15px; letter-spacing: 6px; color: rgb(125, 29, 36);">The Night Court</span>
+        <h1 class="gold" style="margin: 8px 0px 0px; font-family: &quot;Cormorant Garamond&quot;, serif; font-style: italic; font-weight: 600; font-size: 70px; line-height: 1.02; padding: 0px 8px 4px;">Winter Solstice</h1>
+        <span style="font-family: &quot;Cormorant Garamond&quot;, serif; font-style: italic; font-size: 21px; color: rgb(90, 70, 54);">the longest night of the year</span>
+        <span class="div" aria-hidden="true">✦ ✦ ✦</span>
+      </div>
+
+      <p style="margin: 0px; font-family: &quot;Cormorant Garamond&quot;, serif; font-style: italic; font-weight: 500; font-size: 22px; line-height: 1.6; text-align: center; color: rgb(58, 42, 30);">Snow settles over Velaris, and the whole city glows. Lights and garlands hang along the streets, windows burn gold against the dark, and the smell of spiced food drifts from every doorway. It is the longest night of the year, and no one spends it alone.</p>
+
+      <section class="sec">
+        <h2>When &amp; Where</h2>
+        <p>On the longest night of the year, across the Night Court. Velaris is at its most festive, from the snowy streets of the city to the shops along the Palace of Thread and Jewels.</p>
+      </section>
+
+      <span class="div" aria-hidden="true">✦</span>
+
+      <section class="sec">
+        <h2>How Velaris Celebrates</h2>
+        <p>In the days before Solstice, the city fills with shoppers hunting for the perfect gifts, and the streets are strung with lights and evergreen.</p>
+        <p>On the night itself, friends and families gather in their homes to feast, drink and exchange presents, celebrating late into the longest night of the year.</p>
+      </section>
+
+      <span class="div" aria-hidden="true">✦</span>
+
+      <section class="sec">
+        <h2>The Inner Circle</h2>
+        <p>The High Lord and his inner circle spend Solstice together at the townhouse in Velaris, with a long dinner, plenty of wine and a pile of gifts to open by the fire.</p>
+        <div class="inset">
+          <h3>The Snowball Fight</h3>
+          <p>Before the festivities, Rhysand, Cassian and Azriel slip away to a cabin in the snowy mountains for a snowball fight. It is a brotherly battle, and no one fights fair.</p>
+        </div>
+      </section>
+
+      <span class="div" aria-hidden="true">✦</span>
+
+      <section class="sec">
+        <h2>Visitor Etiquette</h2>
+        <p style="font-style: italic;">If you are invited into a home for Solstice, bring a gift.<br>Solstice is spent with those you love; the city grows quiet once the feasting begins.</p>
+      </section>
+    </div>
+  </div>
+
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var phone=false, html=document.documentElement;
+  function fit(){
+    var w=window.innerWidth, z=1;
+    if(phone){ z=Math.max(.8,Math.min(1.35,w/390)); }
+    else if(w<1440){ z=Math.max(.5,w/1440); }
+    html.style.zoom=z;
+  }
+  fit(); window.addEventListener('resize',fit);
+  var inFrame=window.parent&&window.parent!==window;
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a.ev-back, a.ev-lore');
+    if(!a||!inFrame) return;
+    e.preventDefault();
+    if(a.classList.contains('ev-back')) window.parent.postMessage('eurielle-close-guide','*');
+    else window.parent.postMessage({type:'eurielle-open-entry',id:a.getAttribute('data-entry')},'*');
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&inFrame) window.parent.postMessage('eurielle-close-guide','*'); });
+})();
+</script>
+</body>
+</html>
